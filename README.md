@@ -12,6 +12,6 @@ Nota: Los links a las Issues y al tablero corresponden a los actuales pueden hab
 
 Entrega 1
 
-- [Informe](Informe-entrega-1)
+- [Informe](Informe-entrega-1.pdf)
 - [Bugs y errores encontrados: Pestaña de Issues](https://github.com/agustinadisiot/isa2-m7a-06/issues)
 - [Tablero: Pestaña de Projects](https://github.com/agustinadisiot/isa2-m7a-06/projects/1) 
