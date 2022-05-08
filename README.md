@@ -7,6 +7,7 @@
 Aca se encuentra una lista y links a los docuemtos realizados. 
 
 Nota: Los links a las Issues y al tablero corresponden a los actuales pueden haber ocurrido cambios desde las entregas. Se agregan fotos de los mismos según sean necesarios en los informes correspondientes. 
+
 ---
 
 Entrega 1
