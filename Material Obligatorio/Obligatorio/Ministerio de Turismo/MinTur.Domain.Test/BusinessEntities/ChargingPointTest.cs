@@ -26,6 +26,21 @@ namespace MinTur.Domain.Test.BusinessEntities
             Assert.AreEqual(3, chargingPoint.RegionId);
             Assert.AreEqual("PuertoDePuntaDelEsteYMaldonadoPuertoDePuntaDelEsteYMaldonado", chargingPoint.Description);
         }
+        
+        [TestMethod]
+        [ExpectedException(typeof(InvalidRequestDataException))]
+        public void ChargingPointWithInvalidNameFailsValidation() 
+        {
+            ChargingPoint chargingPoint = new ChargingPoint()
+            {
+                Id = 1234,
+                Name = "Inva_lid! Name**",
+                Address = "PuertoDePuntaDelEsteYMaldonado",
+                RegionId = 3,
+                Description = "PuertoDePuntaDelEsteYMaldonadoPuertoDePuntaDelEsteYMaldonado",
+            };
+            chargingPoint.ValidOrFail();
+        }
 
     }
 }

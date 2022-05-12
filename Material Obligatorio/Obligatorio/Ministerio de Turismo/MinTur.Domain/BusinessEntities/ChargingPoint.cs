@@ -26,5 +26,9 @@ namespace MinTur.Domain.BusinessEntities
         [Required]
         public int RegionId { get; set; }
 
+        public void ValidOrFail()
+        {
+            throw new InvalidRequestDataException("Invalid charging point name - only alphanumeric");
+        }
     }
 }
