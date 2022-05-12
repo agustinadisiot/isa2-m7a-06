@@ -1,0 +1,40 @@
+<div *ngFor="let resort of resorts" (click)="navigateToSelectedResort(resort.id)" class="m-4 border-4 rounded-3xl flex flex-row p-3 cursor-pointer hover:border-purple">
+  <div class="w-1/3 flex-shrink-0">
+    <mat-carousel timings="200ms ease-in" [autoplay]="true" interval="6000" [loop]="true" [slides]="resort.images.length" color="primary"
+      [hideArrows]="!(resort.images.length > 1)" [hideIndicators]="false" [useKeyboard]="true" orientation="ltr" proportion="80" >
+      <mat-carousel-slide *ngFor="let image of resort.images; let i = index"
+        [image]="image.data" overlayColor="#71809655" [hideOverlay]="false">
+      </mat-carousel-slide>
+    </mat-carousel>
+  </div>
+  <div class="pl-3 pr-3 w-2/3 flex flex-col">
+    <p class="font-semibold text-indigo text-xl">{{resort.name}}</p>
+    <app-star-rating [availableInput]="false" [stars]="resort.stars"></app-star-rating>
+    <p class="text-justify">{{resort.description}}</p>
+    <div class="flex flex-row">
+      <p class="text-pink font-semibold">Precio por noche: </p>
+      <p class="ml-2"> ${{resort.pricePerNight}} </p>
+    </div>
+    <div class="flex flex-row">
+      <p class="text-pink font-semibold">Precio total: </p>
+      <p class="ml-2"> ${{resort.totalPrice}} </p>
+    </div>
+    <div class="flex flex-row">
+      <p class="text-pink font-semibold">Puntuacion: </p>
+      <div [ngSwitch]="resort.punctuation > 0">
+        <p *ngSwitchCase="true" class="ml-2"> {{resort.punctuation}} / 5</p>
+        <p *ngSwitchCase="false" class="text-gray-600 ml-2"> - </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="resorts?.length == 0" class="ml-10 mr-10 mt-6">
+  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+    <strong class="font-bold">Error: </strong>
+    <div class="flex flex-col">
+      <span class="block sm:inline ml-2">
+        No hay hospedajes que cumpla con tu busqueda
+      </span>
+    </div>
+  </div>
+</div>

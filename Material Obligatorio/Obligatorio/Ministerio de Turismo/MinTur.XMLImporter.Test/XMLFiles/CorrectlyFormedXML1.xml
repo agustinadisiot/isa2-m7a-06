@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <resort>
+    <name>Hotel Italiano</name>
+    <stars>3</stars>
+    <address>Rambla 1234</address>
+    <phoneNumber>0964785</phoneNumber>
+    <reservationMessage>Gracias por tu reserva</reservationMessage>
+    <description>El Hotel Italiano es el mejor</description>
+    <imagesData>imagen1</imagesData>
+    <imagesData>imagen2</imagesData>
+    <pricePerNight>100</pricePerNight>
+    <available>true</available>
+    <touristPoint>
+      <id>2</id>
+      <name>Punta del Este</name>
+      <description>Lugar lindo en uru</description>
+      <image>imagen de punta</image>
+      <regionId>3</regionId>
+      <categoriesId>2</categoriesId>
+      <categoriesId>3</categoriesId>
+      <categoriesId>4</categoriesId>
+    </touristPoint>
+  </resort>
+  <resort>
+    <name>Hotel Aleman</name>
+    <stars>3</stars>
+    <address>Av Italia 1234</address>
+    <phoneNumber>0945231</phoneNumber>
+    <reservationMessage>Gracias por tu reserva</reservationMessage>
+    <description>El Hotel Aleman es el mejor de los mejores</description>
+    <imagesData>imagen1</imagesData>
+    <imagesData>imagen2</imagesData>
+    <imagesData>imagen3</imagesData>
+    <pricePerNight>130</pricePerNight>
+    <available>false</available>
+    <touristPoint>
+      <id>2</id>
+      <name>Montevideo</name>
+      <description>La capital</description>
+      <image>imagen de mvdeo</image>
+      <regionId>1</regionId>
+      <categoriesId>4</categoriesId>
+      <categoriesId>2</categoriesId>
+    </touristPoint>
+  </resort>
+</root>

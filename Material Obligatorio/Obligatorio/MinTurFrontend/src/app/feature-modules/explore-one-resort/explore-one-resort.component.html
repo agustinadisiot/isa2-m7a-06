@@ -1,0 +1,5 @@
+<app-explore-one-resort-details [resort]="resort"></app-explore-one-resort-details>
+
+<app-make-reservation *ngIf="accommodationDetailsProvided" [accommodationDetails]="accommodationDetails" [totalPrice]="totalPrice" [resortId]="resortId"></app-make-reservation>
+<app-review-list [reviews]="reviews"></app-review-list>
+

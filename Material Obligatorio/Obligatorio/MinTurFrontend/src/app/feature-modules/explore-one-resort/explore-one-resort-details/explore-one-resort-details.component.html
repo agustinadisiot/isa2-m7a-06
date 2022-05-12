@@ -1,0 +1,37 @@
+<div *ngIf="resort != null" class="flex flex-row mt-4">
+  <div class="w-1/3 flex-shrink-0 ml-3 border-2 border-indigo">
+    <mat-carousel timings="200ms ease-in" [autoplay]="true" interval="6000" [loop]="true" [slides]="resort.images.length" color="primary"
+    [hideArrows]="!(resort.images.length > 1)" [hideIndicators]="false" [useKeyboard]="true" orientation="ltr" proportion="80">
+    <mat-carousel-slide *ngFor="let image of resort.images; let i = index"
+      [image]="image.data" overlayColor="#71809655" [hideOverlay]="false">
+    </mat-carousel-slide>
+  </mat-carousel>
+  </div>
+  <div class="pl-3 pr-3 w-2/3 flex flex-col">
+    <p class="font-semibold text-indigo text-xl">{{resort.name}}</p>
+    <app-star-rating [availableInput]="false" [stars]="resort.stars"></app-star-rating>
+    <p class="text-justify">{{resort.description}}</p>
+    <div class="flex flex-row">
+      <p class="text-purple font-semibold">Direccion: </p>
+      <p class="ml-2"> {{resort.address}} </p>
+    </div>
+    <div class="flex flex-row">
+      <p class="text-purple font-semibold">Disponible: </p>
+      <div [ngSwitch]="resort.available">
+        <p *ngSwitchCase="true" class="ml-2"> Si </p>
+        <p *ngSwitchCase="false" class="ml-2"> No </p>
+      </div>
+    </div>
+    <div class="flex flex-row">
+      <p class="text-purple font-semibold">Precio por noche: </p>
+      <p class="ml-2"> ${{resort.pricePerNight}} </p>
+    </div>
+    <div class="flex flex-row">
+      <p class="text-purple font-semibold">Puntuacion: </p>
+      <div [ngSwitch]="resort.punctuation > 0">
+        <p *ngSwitchCase="true" class="ml-2"> {{resort.punctuation}} / 5</p>
+        <p *ngSwitchCase="false" class="text-gray-600 ml-2"> - </p>
+      </div>
+    </div>
+  </div>
+</div>

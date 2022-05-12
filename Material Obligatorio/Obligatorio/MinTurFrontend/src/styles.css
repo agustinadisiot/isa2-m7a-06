@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700,800');
+
+@import url('https://use.fontawesome.com/releases/v5.3.1/css/all.css');
+
+body{
+  background-color: #F7FAFC;
+}
+
+html, body { height: 100%; }

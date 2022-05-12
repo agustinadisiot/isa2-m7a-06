@@ -1,0 +1,26 @@
+{
+  "name": "Hotel Italiano",
+  "stars": 3,
+  "address": "Rambla 1234",
+  "phoneNumber": "0964785",
+  "reservationMessage": "Gracias por tu reserva",
+  "description": "El Hotel Italiano es el mejor",
+  "imagesData": [
+    "imagen1",
+    "imagen2"
+  ],
+  "pricePerNight": 100,
+  "available": true,
+  "touristPoint": {
+    "id": 2,
+    "name": "Punta del Este",
+    "description": "Lugar lindo en uru",
+    "image": "imagen de punta",
+    "regionId": 3,
+    "categoriesId": [
+      2,
+      3,
+      4
+    ]
+  }
+}

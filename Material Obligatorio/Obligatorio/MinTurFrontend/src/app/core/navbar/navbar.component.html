@@ -1,0 +1,83 @@
+<div id="sidebar" class="h-screen w-16 menu bg-gray-100 text-white px-4 flex items-center nunito fixed shadow">
+
+  <ul class="list-reset ">
+    <div *ngIf="!IsLoggedIn()">
+      <li class="my-2 md:my-0">
+          <a routerLink="explore/" [routerLinkActive]="['text-purple']" routerLinkActiveOptions="{exact: false}" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-purple hover:font-semibold">
+              <i class="far fa-map mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Explorar</span>
+          </a>
+      </li>
+      <li class="my-2 md:my-0 ">
+          <a routerLink="checkReservation/" [routerLinkActive]="['text-purple']" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-purple hover:font-semibold">
+              <i class="far fa-question-circle mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Ver Reserva</span>
+          </a>
+      </li>
+      <li class="my-2 md:my-0">
+          <a routerLink="submitReview/" [routerLinkActive]="['text-purple']" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-purple hover:font-semibold">
+              <i class="far fa-paper-plane mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Tu Opinion</span>
+          </a>
+      </li>
+    </div>
+    <div *ngIf="IsLoggedIn()">
+      <li class="my-2 md:my-0">
+        <a routerLink="admin/tourist-point-create" [routerLinkActive]="['text-purple']" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-purple hover:font-semibold">
+            <i class="fas fa-map-marked-alt mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Punto Turistico</span>
+        </a>
+      </li>
+      <li class="my-2 md:my-0">
+        <a routerLink="admin/update-reservation-state" [routerLinkActive]="['text-purple']" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-purple hover:font-semibold">
+            <i class="fas fa-money-check mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Reserva</span>
+        </a>
+      </li>
+      <li class="my-2 md:my-0">
+        <a routerLink="admin/resort" [routerLinkActive]="['text-purple']" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-purple hover:font-semibold">
+          <i class="fas fa-hotel mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Hospedajes</span>
+        </a>
+      </li>
+      <li class="my-2 md:my-0">
+        <a routerLink="admin/administrator" [routerLinkActive]="['text-purple']" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-purple hover:font-semibold">
+            <i class="fas fa-user-cog mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Administrador</span>
+        </a>
+      </li>
+      <li class="my-2 md:my-0">
+          <a routerLink="admin/reservation-report" [routerLinkActive]="['text-purple']" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-purple hover:font-semibold">
+              <i class="fas fa-info-circle mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Reporte</span>
+          </a>
+      </li>
+      <li class="my-2 md:my-0">
+        <a routerLink="admin/import" [routerLinkActive]="['text-purple']" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-purple hover:font-semibold">
+            <i class="fas fa-upload mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Importar</span>
+        </a>
+    </li>
+    </div>
+  </ul>
+</div>
+
+<div class="flex flex-row flex-wrap flex-1 flex-grow justify-between pl-16">
+  <nav id="header1" class="bg-indigo-700 w-auto flex-1 border-b-1 border-gray-300 order-1 lg:order-2 pb-3 pt-2">
+
+    <div class="flex h-full justify-between items-center">
+
+      <div class="flex pl-3">
+        <img class="fill-current h-10 w-11 mr-2" src="assets/img/MinTurLogo.svg"/>
+        <span class="font-semibold text-xl tracking-tight mr-6 pt-1 text-white">Ministerio de Turismo</span>
+      </div>
+
+        <div class="mr-3">
+          <div *ngIf="!IsLoggedIn()">
+            <span class="text-gray-500 mr-2">Eres Administrador?</span>
+            <a routerLink="login/" class="inline-block p-1 border rounded text-white border-white hover:border-transparent hover:text-black hover:bg-white">Iniciar Sesion</a>
+          </div>
+
+          <div *ngIf="IsLoggedIn()">
+            <span class="text-gray-500 mr-2">{{getActiveAdminEmail()}}</span>
+            <button (click)="logout()" class="inline-block p-1 border rounded text-white border-white hover:border-transparent hover:text-black hover:bg-white">
+              Cerrar Sesion
+            </button>
+          </div>
+        </div>
+
+    </div>
+
+  </nav>
+</div>

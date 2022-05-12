@@ -1,0 +1,58 @@
+<div *ngIf="!justCheckedReservation" class="flex flex-row justify-around mt-6">
+  <div class="flex flex-col  w-2/3 bg-gray-300 rounded-2xl border-2 border-purple p-3">
+    <span class="h-3 w-3 flex">
+      <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-400"></span>
+    </span>
+    <p class="text-2xl text-indigo font-semibold text-center mb-8">Consulta el estado de tu reserva</p>
+    <div class="flex flex-row ml-2">
+      <p class="text-indigo font-semibold self-center">Codigo de reserva:</p>
+      <mat-form-field class="ml-3 self-start w-3/5" >
+        <mat-label>ej: 0ab3a925-18ea-4651-8a49-83dc4f9db2b4</mat-label>
+        <input matInput (input)="setReservationUniqueCode($event.target.value)">
+      </mat-form-field>
+    </div>
+    <div class="mt-1 flex flex-col justify-around">
+      <button (click)="checkReservation()" [disabled]="justCheckedReservation" class="w-40 h-10 mt-2 self-center bg-indigo-700 hover:bg-white text-white font-semibold
+      hover:text-indigo p-2 border border-indigo rounded">
+        Chequear
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="displayError" class="ml-10 mr-10 mb-8 mt-6">
+  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+    <strong class="font-bold">Error: </strong>
+    <span class="block sm:inline ml-2">{{errorMessage}}</span>
+    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+      <svg (click)="closeError()" class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+    </span>
+  </div>
+</div>
+
+<div *ngIf="justCheckedReservation" class="flex flex-row justify-around mb-8 ">
+  <div class="flex flex-col w-2/3 bg-gray-300 p-3 rounded-2xl border-2 border-purple">
+    <span class="h-3 w-3 flex">
+      <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-400"></span>
+    </span>
+    <p class="text-indigo font-bold text-center mb-6">¡Exito! Tu confirmacion:</p>
+    <div class="flex flex-row mb-8">
+      <p class="font-semibold text-indigo">Descripción: </p>
+      <p class="ml-2">{{reservation.description}}</p>
+    </div>
+    <div class="flex flex-row mb-8">
+      <p class="font-semibold text-indigo">Nombre: </p>
+      <p class="ml-2">{{reservation.name}}</p>
+    </div>
+    <div class="flex flex-row mb-8">
+      <p class="font-semibold text-indigo">Apellido: </p>
+      <p class="ml-2">{{reservation.surname}}</p>
+    </div>
+    <div class="flex flex-row mb-8">
+      <p class="font-semibold text-indigo">Estado: </p>
+      <p class="ml-2">{{reservation.state}}</p>
+    </div>
+  </div>
+</div>

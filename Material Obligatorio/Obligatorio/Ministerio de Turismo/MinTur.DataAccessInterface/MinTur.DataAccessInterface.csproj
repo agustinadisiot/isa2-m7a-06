@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MinTur.Domain\MinTur.Domain.csproj" />
+    <ProjectReference Include="..\MinTur.Exceptions\MinTur.Exceptions.csproj" />
+  </ItemGroup>
+
+</Project>

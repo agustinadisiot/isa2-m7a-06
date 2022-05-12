@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Hotel Italiano",
+    "stars": 3,
+    "address": "Rambla 1234",
+    "phoneNumber": "0964785",
+    "reservationMessage": "Gracias por tu reserva",
+    "description": "El Hotel Italiano es el mejor",
+    "imagesData": [
+      "imagen1",
+      "imagen2"
+    ],
+    "pricePerNight": 100,
+    "available": true,
+    "touristPoint": {
+      "id": 2,
+      "name": "Punta del Este",
+      "description": "Lugar lindo en uru",
+      "image": "imagen de punta",
+      "regionId": 3,
+      "categoriesId": [
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  {
+    "name": "Hotel Aleman",
+    "stars": 3,
+    "address": "Av Italia 1234",
+    "phoneNumber": "0945231",
+    "reservationMessage": "Gracias por tu reserva",
+    "description": "El Hotel Aleman es el mejor de los mejores",
+    "imagesData": [
+      "imagen1"
+    ],
+    "pricePerNight": 130,
+    "available": false,
+    "touristPoint": {
+      "id": 2,
+      "name": "Montevideo",
+      "description": "La capital",
+      "image": "imagen de mvdeo",
+      "regionId": 1,
+      "categoriesId": [
+        4
+      ]
+    }
+  }
+]

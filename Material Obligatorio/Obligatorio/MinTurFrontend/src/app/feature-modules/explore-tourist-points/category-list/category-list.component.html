@@ -1,0 +1,12 @@
+<div class="flex flex-col flex-shrink-0">
+  <p class="sm:ml-2 font-semibold underline text-pink text-center sm:text-left">Filtrar por categorias:</p>
+
+  <div class="flex flex-row sm:flex-col justify-around">
+    <div *ngFor="let category of categories" class=" justify-around">
+      <mat-checkbox (click)="categoryFiltering(category.id)" class="sm:ml-2 mr-2 self-center sm:self-auto" color="primary">
+        {{category.name}}
+      </mat-checkbox>
+    </div>
+  </div>
+
+</div>

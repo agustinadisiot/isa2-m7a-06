@@ -1,0 +1,10 @@
+<app-page-explanation [title]="explanationTitle" [explanation]="explanationDescription"></app-page-explanation>
+<div class="flex flex-col sm:flex-row justify-around">
+  <div class="w-full sm:w-1/5">
+    <app-category-list (categoryChosenEvent)="updateFilteringCategoriesId($event)"></app-category-list>
+  </div>
+  <div class="w-full sm:w-4/5 flex flex-col">
+    <app-accommodation-details [chosenTouristPointId]="chosenTouristPointId"></app-accommodation-details>
+    <app-tourist-point-list (chosenTouristPointIdChange)="updateChosenTouristPointId($event)"></app-tourist-point-list>
+  </div>
+</div>

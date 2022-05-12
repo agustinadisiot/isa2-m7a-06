@@ -1,0 +1,89 @@
+<div class="mt-5 flex flex-row justify-around mb-8">
+  <div *ngIf="!justMadeReservation" class="border-2 rounded-2xl flex flex-col mt-4 w-2/3 p-3 bg-gray-300 ">
+    <span class="h-3 w-3 flex">
+      <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-400"></span>
+    </span>
+    <p class="text-indigo font-bold text-center mb-3">Completa tu reserva</p>
+    <div class="flex flex-row">
+      <p class="font-semibold self-center text-indigo">Nombre: </p>
+      <mat-form-field class="ml-3 self-start" >
+        <mat-label>ej: Pedro</mat-label>
+        <input matInput (input)="setName($event.target.value)">
+      </mat-form-field>
+    </div>
+    <div class="flex flex-row">
+      <p class="font-semibold self-center text-indigo">Apellido: </p>
+      <mat-form-field class="ml-3 self-start">
+        <mat-label>ej: Perez</mat-label>
+        <input matInput (input)="setSurname($event.target.value)">
+      </mat-form-field>
+    </div>
+    <div class="flex flex-row mb-2 border-b-2 border-pink">
+      <p class="font-semibold self-center text-indigo">E-Mail: </p>
+      <mat-form-field class="self-start ml-6">
+        <input type="email" matInput (input)="setEmail($event.target.value)" placeholder="ej: email@ejemplo.com">
+      </mat-form-field>
+    </div>
+    <div class="flex flex-row mt-4 mb-8">
+      <p class="font-semibold text-indigo">Fechas de estadia: </p>
+      <p class="ml-2 text-gray-600">{{parseDateIntoMDY(accommodationDetails.checkIn)}} - {{parseDateIntoMDY(accommodationDetails.checkOut)}}</p>
+    </div>
+    <div class="flex flex-row mb-8">
+      <p class="font-semibold text-indigo">Huespedes: </p>
+      <p class="ml-2 text-gray-600">{{accommodationDetails.adultsAmount}} Adultos</p>
+      <p class="ml-2 text-gray-600">|</p>
+      <p class="ml-2 text-gray-600">{{accommodationDetails.kidsAmount}} Niños</p>
+      <p class="ml-2 text-gray-600">|</p>
+      <p class="ml-2 text-gray-600">{{accommodationDetails.babiesAmount}} Bebes</p>
+      <p class="ml-2 text-gray-600">|</p>
+      <p class="ml-2 text-gray-600">{{accommodationDetails.retiredAmount}} Jubilados</p>
+    </div>
+    <div class="flex flex-row mb-5">
+      <p class="font-semibold text-indigo">Precio Total: </p>
+      <p class="ml-2 text-gray-600">{{totalPrice}}</p>
+    </div>
+    <div class="mt-1 flex flex-col justify-around">
+      <button (click)="makeReservation()" [disabled]="justMadeReservation" class="w-40 h-10 mt-2 self-center bg-indigo-700 hover:bg-white text-white font-semibold
+      hover:text-indigo p-2 border border-indigo rounded">
+        Reservar
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="displayError" class="ml-10 mr-10 mt-6">
+  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+    <strong class="font-bold">Error: </strong>
+    <div class="flex flex-col">
+      <span *ngFor="let error of errorMessages" class="block sm:inline ml-2">
+        {{error}}
+      </span>
+    </div>
+    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+        <svg (click)="closeError()" class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+    </span>
+  </div>
+</div>
+<div *ngIf="justMadeReservation" class="flex flex-row justify-around mb-8">
+  <div class="flex flex-col w-2/3 bg-gray-300 p-3 rounded-2xl">
+    <span class="h-3 w-3 flex">
+      <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-400"></span>
+    </span>
+    <p class="text-indigo font-bold text-center mb-6">¡Exito! Tu confirmacion:</p>
+    <div class="flex flex-row mb-8">
+      <p class="font-semibold text-indigo">Codigo: </p>
+      <p class="ml-2">{{reservationConfirmation.uniqueCode}}</p>
+      <p class="ml-2 text-gray-600">(Guardarlo, es necesario para otros tramites)</p>
+    </div>
+    <div class="flex flex-row mb-8">
+      <p class="font-semibold text-indigo">Numbero de contacto: </p>
+      <p class="ml-2">{{reservationConfirmation.contactPhoneNumber}}</p>
+    </div>
+    <div class="flex flex-row mb-8">
+      <p class="font-semibold text-indigo">Mensaje del hospedaje: </p>
+      <p class="ml-2">{{reservationConfirmation.resortReservationMessage}}</p>
+    </div>
+  </div>
+</div>
+

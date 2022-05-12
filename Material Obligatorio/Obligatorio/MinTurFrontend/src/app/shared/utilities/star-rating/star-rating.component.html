@@ -1,0 +1,32 @@
+<div *ngIf="!availableInput" class="flex flex-row">
+  <div *ngFor="let star of starsArray">
+    <span class="fa fa-star pr-1" style="color:orange"></span>
+  </div>
+</div>
+<div *ngIf="availableInput" class="flex flex-row">
+  <span (click)="selectAmountOfStars(1)" [class]="{
+    'fas': starsToChoose[0],
+    'far': !starsToChoose[0]}"
+    class="pr-1 cursor-pointer fa-star" style="color:orange">
+  </span>
+  <span (click)="selectAmountOfStars(2)" [class]="{
+    'fas': starsToChoose[1],
+    'far': !starsToChoose[1]}"
+    class="pr-1 cursor-pointer fa-star" style="color:orange">
+  </span>
+  <span (click)="selectAmountOfStars(3)" [class]="{
+    'fas': starsToChoose[2],
+    'far': !starsToChoose[2]}"
+    class="pr-1 cursor-pointer fa-star" style="color:orange">
+  </span>
+  <span (click)="selectAmountOfStars(4)" [class]="{
+    'fas': starsToChoose[3],
+    'far': !starsToChoose[3]}"
+    class="pr-1 cursor-pointer fa-star" style="color:orange">
+  </span>
+  <span (click)="selectAmountOfStars(5)" [class]="{
+    'fas': starsToChoose[4],
+    'far': !starsToChoose[4]}"
+    class="pr-1 cursor-pointer fa-star" style="color:orange">
+  </span>
+</div>

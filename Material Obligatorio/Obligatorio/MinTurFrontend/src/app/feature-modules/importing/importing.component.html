@@ -1,0 +1,72 @@
+<app-page-explanation [title]="explanationTitle" [explanation]="explanationDescription"></app-page-explanation>
+<div class="ml-4 flex flex-col">
+  <div class="flex flex-row justify-center">
+    <mat-form-field class="self-start" >
+      <mat-label>Elige un importador</mat-label>
+      <mat-select (selectionChange)="selectImporter($event.value)" class="form-select mt-1 block w-full">
+        <mat-option [value]="importer.name" *ngFor="let importer of availableImporters">{{importer.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="flex flex-row justify-center">
+    <div *ngIf="importerIsChosen" class="border-2 rounded-2xl flex flex-col mt-4 w-2/3 p-3 bg-gray-300 ">
+      <span class="h-3 w-3 flex">
+        <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-400"></span>
+      </span>
+      <p class="text-indigo font-bold text-center mb-3">Completa los campos</p>
+      <div *ngFor="let parameter of chosenImporterParameters" class="flex flex-row">
+        <p class="font-semibold self-center text-indigo">{{parameter.name}} </p>
+        <div *ngIf="showFileParameter(parameter.type)">
+          <mat-form-field class="ml-3 self-start" >
+            <mat-label>ej: archivo.json/xml</mat-label>
+            <input matInput (input)="addParameter(parameter.name, $event.target.value)">
+          </mat-form-field>
+        </div>
+        <div *ngIf="showTextParameter(parameter.type)">
+          <mat-form-field class="ml-3 self-start" >
+            <mat-label>ej: texto de ejemplo</mat-label>
+            <input matInput (input)="addParameter(parameter.name, $event.target.value)">
+          </mat-form-field>
+        </div>
+        <div *ngIf="showNumberParameter(parameter.type)">
+          <app-number-input-spinner (selectedValueChange)="addParameter(parameter.name, $event.value + '')">
+          </app-number-input-spinner>
+        </div>
+        <div *ngIf="showNumberParameter(parameter.type)">
+          <mat-radio-group aria-label="Selecciona una disponibilidad" class="ml-3" (change)="addParameter(parameter.name ,$event.value + '')">
+            <mat-radio-button [value]="true">Verdadero</mat-radio-button>
+            <mat-radio-button [value]="false">Falso</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="mt-1 flex flex-col justify-around">
+        <button (click)="useImporter()" class="w-40 h-10 mt-2 self-center bg-indigo-700 hover:bg-white text-white font-semibold
+        hover:text-indigo p-2 border border-indigo rounded">
+          Importar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-row justify-center">
+  <div *ngIf="importingResultAvailable" class="border-2 rounded-2xl flex flex-col mt-4 w-2/3 p-3 bg-gray-300 ">
+    <span class="h-3 w-3 flex">
+      <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-400"></span>
+    </span>
+    <p class="text-indigo font-bold text-center mb-3">Hospedajes exitosamente importados</p>
+    <div *ngFor="let resort of importingResult.succesfulImportedResorts" class="flex flex-row">
+      <p class="font-semibold self-center">{{resort.name}} </p>
+    </div>
+    <p class="text-indigo font-bold text-center mb-3">Puntos turisticos exitosamente importados</p>
+    <div *ngFor="let touristPoint of importingResult.succesfulImportedTouristPoints" class="flex flex-row">
+      <p class="font-semibold self-center">{{touristPoint.name}} </p>
+    </div>
+    <p class="text-indigo font-bold text-center mb-3">Hospedajes que fallaron en su importacion</p>
+    <div *ngFor="let failedResort of importingResult.failedImportingResorts" class="flex flex-row">
+      <p class="font-semibold self-center">{{failedResort.errorInCreation}} </p>
+    </div>
+  </div>
+</div>

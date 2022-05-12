@@ -1,0 +1,5 @@
+<app-page-explanation [title]="explanationTitle" [explanation]="explanationDescription"></app-page-explanation>
+<div class="ml-5">
+  <app-report-input (reportInputChosen)="generateReport($event)"></app-report-input>
+  <app-report-list [individualReports]="individualReports"></app-report-list>
+</div>
