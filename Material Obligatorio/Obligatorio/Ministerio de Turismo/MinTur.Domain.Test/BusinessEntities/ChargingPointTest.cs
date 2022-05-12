@@ -20,11 +20,11 @@ namespace MinTur.Domain.Test.BusinessEntities
                 RegionId = 3,
                 Description = "PuertoDePuntaDelEsteYMaldonadoPuertoDePuntaDelEsteYMaldonado",
             };
-            Assert.Equals(1234, chargingPoint.Id);
-            Assert.Equals("Punta Este Estacion2", chargingPoint.Name);
-            Assert.Equals("PuertoDePuntaDelEsteYMaldonado", chargingPoint.Address);
-            Assert.Equals(3, chargingPoint.RegionId);
-            Assert.Equals("PuertoDePuntaDelEsteYMaldonadoPuertoDePuntaDelEsteYMaldonado", chargingPoint.Description);
+            Assert.AreEqual(1234, chargingPoint.Id);
+            Assert.AreEqual("Punta Este Estacion2", chargingPoint.Name);
+            Assert.AreEqual("PuertoDePuntaDelEsteYMaldonado", chargingPoint.Address);
+            Assert.AreEqual(3, chargingPoint.RegionId);
+            Assert.AreEqual("PuertoDePuntaDelEsteYMaldonadoPuertoDePuntaDelEsteYMaldonado", chargingPoint.Description);
         }
 
     }
