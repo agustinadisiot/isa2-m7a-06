@@ -27,8 +27,39 @@ namespace MinTur.Domain.BusinessEntities
         public int RegionId { get; set; }
 
         public void ValidOrFail()
+        { 
+            ValidateId();
+           ValidateName();
+           ValidateDescription();
+           ValidateAddress();
+        }
+
+        private void ValidateId()
         {
-            throw new InvalidRequestDataException("Invalid charging point name - only alphanumeric");
+            if ( Id > 9999 || Id < 1111)
+                throw new InvalidRequestDataException("Invalid charging point id");
+        }
+
+        private void ValidateName()
+        {
+            Regex nameRegex = new Regex(@"^[a-zA-ZñÑáéíóúü0-9 ]+$");
+
+            if (Name == null || !nameRegex.IsMatch(Name) || Name.Length > 20)
+                throw new InvalidRequestDataException("Invalid charging point name");
+        }
+        
+        private void ValidateDescription() 
+        {
+            Regex descriptionRegex = new Regex(@"^[a-zA-ZñÑáéíóúü0-9 ]+$");
+            if (Description == null || Description.Length > 60 || !descriptionRegex.IsMatch(Description))
+                throw new InvalidRequestDataException("Invalid charging point description");
+        }
+        
+        private void ValidateAddress() 
+        {
+            Regex addressRegex = new Regex(@"^[a-zA-ZñÑáéíóúü0-9 ]+$");
+            if (Address == null || Address.Length > 30 || !addressRegex.IsMatch(Address))
+                throw new InvalidRequestDataException("Invalid charging point address");
         }
     }
 }
