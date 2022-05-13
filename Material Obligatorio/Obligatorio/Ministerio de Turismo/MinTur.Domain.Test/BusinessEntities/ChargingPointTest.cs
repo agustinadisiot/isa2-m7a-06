@@ -132,6 +132,5 @@ namespace MinTur.Domain.Test.BusinessEntities
             chargingPoint.ValidOrFail();
         }
 
-
     }
 }
