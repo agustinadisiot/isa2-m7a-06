@@ -20,6 +20,7 @@ namespace MinTur.DataAccess.Facades
         private AuthenticationTokenRepository _authenticationTokenRepository;
         private AdministratorRepository _administratorRepository;
         private ReviewRepository _reviewRepository;
+        private ChargingPointRepository _chargingPointRepository;
 
         public RepositoryFacade(DbContext context)
         {
@@ -32,6 +33,7 @@ namespace MinTur.DataAccess.Facades
             _authenticationTokenRepository = new AuthenticationTokenRepository(_context);
             _administratorRepository = new AdministratorRepository(_context);
             _reviewRepository = new ReviewRepository(_context);
+            _chargingPointRepository = new ChargingPointRepository(_context);
         }
 
         public List<Category> GetAllCategories()
