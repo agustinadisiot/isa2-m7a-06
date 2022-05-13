@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MinTur.DataAccess.Contexts;
 using MinTur.Domain.BusinessEntities;
 using System.Linq;
+using MinTur.DataAccess.Repositories;
 
 namespace MinTur.DataAccess.Test.Repositories
 {
@@ -30,7 +31,7 @@ namespace MinTur.DataAccess.Test.Repositories
         public void StoreChargingPointReturnsAsExpected() 
         {
             ChargingPoint chargingPoint = LoadRelatedEntitiesAndCreateTouristPoint();
-            int newChargingPointId = _repository.ChargingPointRepository(chargingPoint);
+            int newChargingPointId = _repository.StoreChargingPoint(chargingPoint);
 
             Assert.AreEqual(chargingPoint.Id, newChargingPointId);
             Assert.IsNotNull(_context.ChargingPoints.Where(t => t.Id == newChargingPointId).FirstOrDefault());

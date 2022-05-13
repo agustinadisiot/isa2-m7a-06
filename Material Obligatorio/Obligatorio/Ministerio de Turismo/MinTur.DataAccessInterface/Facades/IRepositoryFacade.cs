@@ -3,7 +3,7 @@
 namespace MinTur.DataAccessInterface.Facades
 {
     public interface IRepositoryFacade : IRegionRepository, ITouristPointRepository, ICategoryRepository, IResortRepository, IReservationRepository,
-        IAuthenticationTokenRepository, IAdministratorRepository, IReviewRepository
+        IAuthenticationTokenRepository, IAdministratorRepository, IReviewRepository, IChargingPointRepository
     {
 
     }
