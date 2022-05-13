@@ -23,9 +23,22 @@ namespace MinTur.DataAccess.Repositories
             if (!RegionExists(chargingPoint.RegionId))
                 throw new ResourceNotFoundException("Could not find specified region");
 
-            return 0;
+            chargingPoint.Region = Context.Set<Region>().Where(r => r.Id == chargingPoint.RegionId).FirstOrDefault();
+            StoreChargingPointInDb(chargingPoint);
+
+            return chargingPoint.Id;
         }
-        
+
+        private void StoreChargingPointInDb(ChargingPoint chargingPoint)
+        {
+            Context.Entry(chargingPoint.Region).State = EntityState.Unchanged;
+
+            Context.Set<ChargingPoint>().Add(chargingPoint);
+            Context.SaveChanges();
+
+            Context.Entry(chargingPoint.Region).State = EntityState.Detached;
+        }
+
         private bool RegionExists(int regionId)
         {
             Region region = Context.Set<Region>().AsNoTracking().Where(r => r.Id == regionId).FirstOrDefault();
