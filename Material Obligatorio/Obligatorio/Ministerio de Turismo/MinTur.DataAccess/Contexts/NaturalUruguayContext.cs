@@ -11,6 +11,7 @@ namespace MinTur.DataAccess.Contexts
     {
         public DbSet<Region> Regions { get; set; }
         public DbSet<TouristPoint> TouristPoints { get; set; }
+        public DbSet<ChargingPoint> ChargingPoints { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<TouristPointCategory> TouristPointCategories { get; set; }
         public DbSet<Resort> Resorts { get; set; }

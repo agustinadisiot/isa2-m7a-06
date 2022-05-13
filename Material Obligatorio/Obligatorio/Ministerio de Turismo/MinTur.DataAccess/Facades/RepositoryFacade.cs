@@ -157,5 +157,10 @@ namespace MinTur.DataAccess.Facades
         {
             return _reviewRepository.GetReviewById(reviewId);
         }
+
+        public int StoreChargingPoint(ChargingPoint chargingPoint)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

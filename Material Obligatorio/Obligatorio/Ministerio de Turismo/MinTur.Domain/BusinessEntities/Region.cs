@@ -10,10 +10,12 @@ namespace MinTur.Domain.BusinessEntities
         [Required]
         public string Name { get; set; }
         public List<TouristPoint> TouristPoints { get; private set; }
+        public List<ChargingPoint> ChargingPoints { get; private set; }
 
         public Region()  
         {
             TouristPoints = new List<TouristPoint>();
+            ChargingPoints = new List<ChargingPoint>();
         }
 
         public override bool Equals(object obj)
