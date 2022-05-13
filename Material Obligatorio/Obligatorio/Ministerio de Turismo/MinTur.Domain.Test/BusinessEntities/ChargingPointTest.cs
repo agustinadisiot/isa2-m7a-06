@@ -32,6 +32,25 @@ namespace MinTur.Domain.Test.BusinessEntities
         }
         
         [TestMethod]
+        public void RegionWithChargingPoints()
+        {
+            ChargingPoint chargingPoint = new ChargingPoint()
+            {
+                Id = 1234,
+                Name = "Punta Este Estacion2",
+                Address = "PuertoDePuntaDelEsteYMaldonado",
+                RegionId = 3,
+                Description = "PuertoDePuntaDelEsteYMaldonadoPuertoDePuntaDelEsteYMaldonado"
+            };
+
+            Region region = new Region { Name = "Metro", Id = 3 };
+            region.ChargingPoints.Add(chargingPoint);
+            ChargingPoint newChargingPoint = region.ChargingPoints.FirstOrDefault(c => c.Id == chargingPoint.Id);
+            Assert.AreEqual(newChargingPoint.Id, chargingPoint.Id);
+
+        }
+        
+        [TestMethod]
         [ExpectedException(typeof(InvalidRequestDataException))]
         public void ChargingPointWithInvalidIdFailsValidation() 
         {
