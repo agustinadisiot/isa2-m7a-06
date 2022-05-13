@@ -2,7 +2,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MinTur.DataAccess.Contexts;
 using MinTur.Domain.BusinessEntities;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using MinTur.DataAccess.Repositories;
+using MinTur.Exceptions;
 
 namespace MinTur.DataAccess.Test.Repositories
 {
@@ -26,6 +28,15 @@ namespace MinTur.DataAccess.Test.Repositories
             _context.Database.EnsureDeleted();
         }
         
+        [TestMethod]
+        [ExpectedException(typeof(ResourceNotFoundException))]
+        public void StoreTouristPointNonExistentRegion()
+        {
+            ChargingPoint chargingPoint = LoadRelatedEntitiesAndCreateTouristPoint();
+            chargingPoint.RegionId = -4;
+
+            _repository.StoreChargingPoint(chargingPoint);
+        }
 
         [TestMethod]
         public void StoreChargingPointReturnsAsExpected() 
@@ -38,5 +49,29 @@ namespace MinTur.DataAccess.Test.Repositories
         }
 
 
+        
+        #region Helpers
+       
+        public ChargingPoint LoadRelatedEntitiesAndCreateTouristPoint() 
+        {
+            Region region = new Region() { Name = "Metropolitana" , Id = 10};
+
+            _context.Regions.Add(region);
+            _context.SaveChanges();
+            _context.Entry(region).State = EntityState.Detached;
+            ChargingPoint newChargingPoint =  new ChargingPoint()
+            {
+                Name = "Ancap Rambla Gandhi",
+                Description = "Descripcion sobre la estacion de carga....",
+                RegionId = region.Id,
+                Address = "Gandhi 2647",
+                Id = 1234
+            };
+
+            return newChargingPoint;
+        }
+        
+        #endregion
+        
     }
 }

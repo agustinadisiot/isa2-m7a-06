@@ -26,6 +26,9 @@ namespace MinTur.Domain.BusinessEntities
         [Required]
         public int RegionId { get; set; }
 
+        [Required]
+        public Region Region { get; set; }
+
         public void ValidOrFail()
         { 
            ValidateId();

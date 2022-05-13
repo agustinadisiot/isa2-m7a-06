@@ -19,12 +19,16 @@ namespace MinTur.Domain.Test.BusinessEntities
                 Address = "PuertoDePuntaDelEsteYMaldonado",
                 RegionId = 3,
                 Description = "PuertoDePuntaDelEsteYMaldonadoPuertoDePuntaDelEsteYMaldonado",
+                Region = new Region{Name = "Metropolitano", Id = 3}
             };
+
             Assert.AreEqual(1234, chargingPoint.Id);
             Assert.AreEqual("Punta Este Estacion2", chargingPoint.Name);
             Assert.AreEqual("PuertoDePuntaDelEsteYMaldonado", chargingPoint.Address);
             Assert.AreEqual(3, chargingPoint.RegionId);
             Assert.AreEqual("PuertoDePuntaDelEsteYMaldonadoPuertoDePuntaDelEsteYMaldonado", chargingPoint.Description);
+            Assert.AreEqual(chargingPoint.RegionId, chargingPoint.Region.Id);
+
         }
         
         [TestMethod]
