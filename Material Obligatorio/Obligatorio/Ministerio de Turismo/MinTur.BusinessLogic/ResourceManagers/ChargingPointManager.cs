@@ -13,15 +13,10 @@ namespace MinTur.BusinessLogic.ResourceManagers
         {
             _repositoryFacade = repositoryFacade;
         }
-
-        public TouristPoint RegisterTouristPoint(TouristPoint touristPoint)
+        
+        public ChargingPoint GetChargingPointById(int chargingPoint)
         {
-            touristPoint.ValidOrFail();
-
-            int newTouristPointId = _repositoryFacade.StoreTouristPoint(touristPoint);
-            TouristPoint storedTouristPoint = _repositoryFacade.GetTouristPointById(newTouristPointId);
-
-            return storedTouristPoint;
+            return _repositoryFacade.GetChargingPointById(chargingPoint);
         }
 
         public ChargingPoint RegisterChargingPoint(ChargingPoint chargingPoint)

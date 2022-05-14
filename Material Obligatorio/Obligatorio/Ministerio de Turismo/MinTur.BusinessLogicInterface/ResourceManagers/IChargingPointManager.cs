@@ -7,5 +7,6 @@ namespace MinTur.BusinessLogicInterface.ResourceManagers
     public interface IChargingPointManager
     {
         ChargingPoint RegisterChargingPoint(ChargingPoint chargingPoint);
+        ChargingPoint GetChargingPointById(int chargingPoint);
     }
 }

@@ -4,7 +4,6 @@ using MinTur.BusinessLogic.ResourceManagers;
 using MinTur.DataAccessInterface.Facades;
 using MinTur.Domain.BusinessEntities;
 using System.Collections.Generic;
-using MinTur.Domain.SearchCriteria;
 
 namespace MinTur.BusinessLogic.Test.ResourceManagers
 {
@@ -12,7 +11,6 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
     public class ChargingPointManagerTest
     {
         private List<ChargingPoint> _chargingPoints;
-        private List<Resort> _resorts;
         private Mock<IRepositoryFacade> _repositoryFacadeMock;
         private Mock<ChargingPoint> _chargingPointMock;
 
@@ -21,7 +19,6 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
         public void SetUp()
         {
             _chargingPoints = new List<ChargingPoint>();
-            _resorts = new List<Resort>();
             _repositoryFacadeMock = new Mock<IRepositoryFacade>(MockBehavior.Strict);
             _chargingPointMock = new Mock<ChargingPoint>(MockBehavior.Strict);
 
@@ -56,6 +53,28 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
         #endregion
         
         
+        [TestMethod]
+        public void GetChargingPointByIdReturnsAsExpected()
+        {
+            ChargingPoint chargingPointToFind = new ChargingPoint()
+            {
+                Id = 1,
+                Name = "Punta del Este",
+                Region = new Region()
+                {
+                    Id = 0,
+                    Name = "Metropolitana"
+                },
+                Description = "Test"
+            };
+            _repositoryFacadeMock.Setup(r => r.GetChargingPointById(It.IsAny<int>())).Returns(chargingPointToFind);
+
+            ChargingPointManager chargingPointManager = new ChargingPointManager(_repositoryFacadeMock.Object);
+            ChargingPoint retrievedChargingPoint = chargingPointManager.GetChargingPointById(chargingPointToFind.Id);
+
+            _repositoryFacadeMock.VerifyAll();
+            Assert.IsTrue(retrievedChargingPoint.Id.Equals(chargingPointToFind.Id));
+        }
 
         [TestMethod]
         public void RegisterChargingPointReturnsAsExpected() 
@@ -65,6 +84,7 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
 
             _chargingPointMock.Setup(t => t.ValidOrFail());
             _repositoryFacadeMock.Setup(r => r.StoreChargingPoint(_chargingPointMock.Object)).Returns(chargingPointId);
+            _repositoryFacadeMock.Setup(r => r.GetChargingPointById(chargingPointId)).Returns(chargingPointWithSpecificId);
 
             ChargingPointManager chargingPointManager = new ChargingPointManager(_repositoryFacadeMock.Object);
             ChargingPoint registerChargingPoint = chargingPointManager.RegisterChargingPoint(_chargingPointMock.Object);
