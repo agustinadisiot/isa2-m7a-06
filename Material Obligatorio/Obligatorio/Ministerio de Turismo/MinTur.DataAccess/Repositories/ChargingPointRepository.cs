@@ -17,6 +17,22 @@ namespace MinTur.DataAccess.Repositories
             Context = dbContext;
         }
 
+        public ChargingPoint GetChargingPointById(int chargingPointId)
+        {
+            if (!ChargingPointExists(chargingPointId))
+                throw new ResourceNotFoundException("Could not find specified charging point");
+
+            ChargingPoint retrievedChargingPoint = Context.Set<ChargingPoint>().AsNoTracking().Where(t => t.Id == chargingPointId).Include(t => t.Region)
+                .FirstOrDefault();
+
+            return retrievedChargingPoint;
+        }
+        
+        private bool ChargingPointExists(int chargingPointId)
+        {
+            ChargingPoint chargingPoint = Context.Set<ChargingPoint>().AsNoTracking().Where(t => t.Id == chargingPointId).FirstOrDefault();
+            return chargingPoint != null;
+        }
 
         public int StoreChargingPoint(ChargingPoint chargingPoint)
         {

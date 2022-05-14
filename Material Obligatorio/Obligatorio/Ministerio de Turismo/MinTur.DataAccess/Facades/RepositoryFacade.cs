@@ -162,7 +162,12 @@ namespace MinTur.DataAccess.Facades
 
         public int StoreChargingPoint(ChargingPoint chargingPoint)
         {
-            throw new NotImplementedException();
+            return _chargingPointRepository.StoreChargingPoint(chargingPoint);
+        }
+
+        public ChargingPoint GetChargingPointById(int chargingPointId)
+        {
+            return _chargingPointRepository.GetChargingPointById(chargingPointId);
         }
     }
 }

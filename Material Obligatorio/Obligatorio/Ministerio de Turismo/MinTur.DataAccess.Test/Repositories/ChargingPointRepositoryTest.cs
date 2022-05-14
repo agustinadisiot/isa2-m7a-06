@@ -36,7 +36,7 @@ namespace MinTur.DataAccess.Test.Repositories
             _context.SaveChanges();
 
             ChargingPoint retrievedChargingPoint = _repository.GetChargingPointById(expectedChargingPoint.Id);
-            Assert.IsTrue(expectedChargingPoint.Equals(retrievedChargingPoint));
+            Assert.IsTrue(expectedChargingPoint.Id.Equals(retrievedChargingPoint.Id));
         }
 
         [TestMethod]
