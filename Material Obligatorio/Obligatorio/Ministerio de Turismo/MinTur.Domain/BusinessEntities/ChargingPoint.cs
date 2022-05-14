@@ -39,7 +39,7 @@ namespace MinTur.Domain.BusinessEntities
 
         private void ValidateId()
         {
-            if ( Id > 9999 || Id < 1111)
+            if ( Id.ToString().Length != 4)
                 throw new InvalidRequestDataException("Invalid charging point id");
         }
 

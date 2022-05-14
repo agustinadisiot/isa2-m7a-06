@@ -67,6 +67,22 @@ namespace MinTur.Domain.Test.BusinessEntities
         
         [TestMethod]
         [ExpectedException(typeof(InvalidRequestDataException))]
+        public void ChargingPointWithInvalidIdFailsValidation2() 
+        {
+            ChargingPoint chargingPoint = new ChargingPoint()
+            {
+                Id = 001,
+                Name = "Valid",
+                Address = "PuertoDePuntaDelEsteYMaldonado",
+                RegionId = 3,
+                Description = new string('a', 60 ),
+            };
+            chargingPoint.ValidOrFail();
+        }
+
+        
+        [TestMethod]
+        [ExpectedException(typeof(InvalidRequestDataException))]
         public void ChargingPointWithInvalidNameFailsValidation() 
         {
             ChargingPoint chargingPoint = new ChargingPoint()
