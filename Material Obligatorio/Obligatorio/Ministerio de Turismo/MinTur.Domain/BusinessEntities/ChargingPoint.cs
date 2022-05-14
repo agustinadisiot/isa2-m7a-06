@@ -29,7 +29,7 @@ namespace MinTur.Domain.BusinessEntities
         [Required]
         public Region Region { get; set; }
 
-        public void ValidOrFail()
+        public virtual void ValidOrFail()
         { 
            ValidateId();
            ValidateName();
