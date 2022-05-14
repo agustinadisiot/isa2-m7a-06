@@ -29,6 +29,24 @@ namespace MinTur.DataAccess.Test.Repositories
         }
         
         [TestMethod]
+        public void GetChargingPointByIdReturnsAsExpected()
+        {
+            ChargingPoint expectedChargingPoint = LoadRelatedEntitiesAndCreateTouristPoint();
+            _context.ChargingPoints.Add(expectedChargingPoint);
+            _context.SaveChanges();
+
+            ChargingPoint retrievedChargingPoint = _repository.GetChargingPointById(expectedChargingPoint.Id);
+            Assert.IsTrue(expectedChargingPoint.Equals(retrievedChargingPoint));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ResourceNotFoundException))]
+        public void GetTChargingPointByIdWhichDoesntExistThrowsException()
+        {
+            _repository.GetChargingPointById(-3);
+        }
+        
+        [TestMethod]
         [ExpectedException(typeof(ResourceNotFoundException))]
         public void StoreTouristPointNonExistentRegion()
         {
@@ -51,8 +69,8 @@ namespace MinTur.DataAccess.Test.Repositories
 
         
         #region Helpers
-       
-        public ChargingPoint LoadRelatedEntitiesAndCreateTouristPoint() 
+
+        private ChargingPoint LoadRelatedEntitiesAndCreateTouristPoint() 
         {
             Region region = new Region() { Name = "Metropolitana" , Id = 10};
 

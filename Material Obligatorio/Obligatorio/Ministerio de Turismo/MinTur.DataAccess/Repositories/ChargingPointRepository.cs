@@ -44,5 +44,7 @@ namespace MinTur.DataAccess.Repositories
             Region region = Context.Set<Region>().AsNoTracking().Where(r => r.Id == regionId).FirstOrDefault();
             return region != null;
         }
+        
+        
     }
 }
