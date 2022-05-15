@@ -27,7 +27,7 @@ namespace MinTur.Models.Out
             if (obj == null || obj.GetType() != GetType())
                 return false;
 
-            var chargingPointModel = obj as TouristPointBasicInfoModel;
+            var chargingPointModel = obj as ChargingPointBasicInfoModel;
             return Id == chargingPointModel.Id;
         }
 

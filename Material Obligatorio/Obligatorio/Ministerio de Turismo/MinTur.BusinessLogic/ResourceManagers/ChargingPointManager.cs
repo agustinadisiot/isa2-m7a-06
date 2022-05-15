@@ -26,6 +26,7 @@ namespace MinTur.BusinessLogic.ResourceManagers
             int newChargingPointId = _repositoryFacade.StoreChargingPoint(chargingPoint);
             ChargingPoint storedTouristPoint = _repositoryFacade.GetChargingPointById(newChargingPointId);
 
+            storedTouristPoint.ValidateId();
             return storedTouristPoint;
         }
     }

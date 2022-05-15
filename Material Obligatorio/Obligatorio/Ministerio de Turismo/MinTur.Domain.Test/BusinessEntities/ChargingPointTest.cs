@@ -62,7 +62,7 @@ namespace MinTur.Domain.Test.BusinessEntities
                 RegionId = 3,
                 Description = new string('a', 60 ),
             };
-            chargingPoint.ValidOrFail();
+            chargingPoint.ValidateId();
         }
         
         [TestMethod]
@@ -77,7 +77,7 @@ namespace MinTur.Domain.Test.BusinessEntities
                 RegionId = 3,
                 Description = new string('a', 60 ),
             };
-            chargingPoint.ValidOrFail();
+            chargingPoint.ValidateId();
         }
 
         

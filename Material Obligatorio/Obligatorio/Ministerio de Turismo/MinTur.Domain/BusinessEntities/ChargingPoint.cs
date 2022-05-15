@@ -30,14 +30,13 @@ namespace MinTur.Domain.BusinessEntities
         public Region Region { get; set; }
 
         public virtual void ValidOrFail()
-        { 
-           ValidateId();
-           ValidateName();
+        {
+            ValidateName();
            ValidateDescription();
            ValidateAddress();
         }
 
-        private void ValidateId()
+        public void ValidateId()
         {
             if ( Id.ToString().Length != 4)
                 throw new InvalidRequestDataException("Invalid charging point id");
