@@ -15,7 +15,7 @@ namespace MinTur.Models.Test.In
             ChargingPointIntentModel chargingPointIntentModel = new ChargingPointIntentModel()
             {
                 Name = "Punta del este",
-                Description = "Descripyion...",
+                Description = "Description...",
                 RegionId = 3,
                 Address = "jsafigrehgeruhwdjiw",
             };

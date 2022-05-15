@@ -26,48 +26,10 @@ namespace MinTur.WebApi.Test.Controllers
             _touristPoints = new List<TouristPoint>();
             _touristPointsModel = new List<TouristPointBasicInfoModel>();
             _touristPointManagerMock = new Mock<ITouristPointManager>(MockBehavior.Strict);
-
-            LoadTouristPoints();
-            LoadTouristPointsModels();
-        }
-
-        private void LoadTouristPoints()
-        {
-            Region region1 = new Region() { Id = 0, Name = "Metropolitana" };
-            Region region2 = new Region() { Id = 1, Name = "Centro Sur" };
-
-            TouristPoint touristPoint1 = new TouristPoint()
-            {
-                Id = 0,
-                Name = "Punta Del Este",
-                Description = "Donde el lujo y la naturaleza convergen: Punta del Este es reconocido internacionalmente como...",
-                Image = new Image() { Id = 1, Data = "sadfawgewrsge" },
-                RegionId = region1.Id,
-                Region = region1,
-            };
-            touristPoint1.AddCategory(new Category() { Id = 1, Name = "Playas" });
-
-            TouristPoint touristPoint2 = new TouristPoint()
-            {
-                Id = 1,
-                Name = "Cabo Polonio",
-                Description = "Donde el lujo y la naturaleza convergen: Punta del Este es reconocido internacionalmente como...",
-                Image = new Image() { Id = 2, Data = "gfdhthtrjy" },
-                RegionId = region2.Id,
-                Region = region2,
-            };
-            touristPoint2.AddCategory(new Category() { Id = 3, Name = "Reservado" });
-
-        }
-        private void LoadTouristPointsModels()
-        {
-            foreach (TouristPoint touristPoint in _touristPoints)
-            {
-                _touristPointsModel.Add(new TouristPointBasicInfoModel(touristPoint));
-            }
         }
         #endregion
 
+        
         [TestMethod]
         public void GetAllTouristPointsOKTest()
         {
@@ -116,7 +78,7 @@ namespace MinTur.WebApi.Test.Controllers
         }
 
         #region Helpers
-        public TouristPointIntentModel CreateTouristPointIntentModel()
+        private TouristPointIntentModel CreateTouristPointIntentModel()
         {
             return new TouristPointIntentModel()
             {
@@ -127,7 +89,7 @@ namespace MinTur.WebApi.Test.Controllers
                 CategoriesId = new List<int>() { 1, 3, 84 }
             };
         }
-        public TouristPoint CreateTouristPoint()
+        private TouristPoint CreateTouristPoint()
         {
             return new TouristPoint()
             {
