@@ -2,7 +2,7 @@ name: .NET
 
 on:
   push:
-    branches: [ feature-BuildAutomation ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
