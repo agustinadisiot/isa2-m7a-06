@@ -66,18 +66,18 @@ namespace MinTur.Domain.Test.BusinessEntities
         }
         
         [TestMethod]
-        [ExpectedException(typeof(InvalidRequestDataException))]
-        public void ChargingPointWithInvalidIdFailsValidation2() 
+        public void ChargingPointWithValidIdFailsValidation2() 
         {
             ChargingPoint chargingPoint = new ChargingPoint()
             {
-                Id = 001,
+                Id = 1,
                 Name = "Valid",
                 Address = "PuertoDePuntaDelEsteYMaldonado",
                 RegionId = 3,
                 Description = new string('a', 60 ),
             };
             chargingPoint.ValidateId();
+            Assert.AreEqual(chargingPoint.Id, 1);
         }
 
         

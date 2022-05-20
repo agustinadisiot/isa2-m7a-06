@@ -30,16 +30,15 @@ namespace MinTur.Domain.BusinessEntities
         public Region Region { get; set; }
 
         public virtual void ValidOrFail()
-        {
-            ValidateName();
+        { ValidateName();
            ValidateDescription();
            ValidateAddress();
         }
 
         public void ValidateId()
         {
-            if ( Id.ToString().Length != 4)
-                throw new InvalidRequestDataException("Invalid charging point id");
+            if ( Id.ToString().Length > 4)
+                throw new InvalidRequestDataException("Invalid charging point id, you have reached the limit for charging points");
         }
 
         private void ValidateName()
