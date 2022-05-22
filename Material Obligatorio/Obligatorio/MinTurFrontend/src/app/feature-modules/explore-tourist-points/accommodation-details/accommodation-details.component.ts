@@ -9,6 +9,7 @@ import { ResortRoutes } from 'src/app/core/routes';
 })
 export class AccommodationDetailsComponent implements OnInit {
   public minDate = new Date();
+  public minDateToday = new Date(this.minDate.getFullYear(), this.minDate.getMonth(), this.minDate.getDate(),0,0,0,0);
   @Input() chosenTouristPointId: number = null;
   private checkIn: Date;
   private checkOut: Date;
@@ -93,8 +94,7 @@ export class AccommodationDetailsComponent implements OnInit {
       validAccommodation = false;
       this.accommodationValidationErrorMessage = 'Debe eligir las fechas de su estadia';
     }
-    // TODO
-    if (this.checkIn < this.minDate){
+    if (this.checkIn < this.minDateToday){
       validAccommodation = false;
       this.accommodationValidationErrorMessage = 'No se puede resevar para un dia anterior al dia de hoy';
     }

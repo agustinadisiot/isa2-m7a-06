@@ -95,7 +95,7 @@ namespace MinTur.BusinessLogic.Test.ResourceManagers
         public void GetAllResortsForAccommodationByMatchingCriteriaReturnsAsExpected()
         {
             ResortSearchCriteria resortSearchCriteria = new ResortSearchCriteria();
-            _accomodationMock.Setup(a => a.ValidOrFail(DateTime.Today));
+            _accomodationMock.Setup(a => a.ValidOrFail(DateTime.Today)).Returns(true);
             _repositoryFacadeMock.Setup(r => r.GetAllResortsByMatchingCriteria(resortSearchCriteria.MatchesCriteria)).Returns(_resorts);
 
             ResortManager resortManager = new ResortManager(_repositoryFacadeMock.Object);
