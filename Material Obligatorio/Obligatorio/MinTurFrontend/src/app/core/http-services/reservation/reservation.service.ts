@@ -1,6 +1,6 @@
 import { ReservationEndpoints } from './../endpoints';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReservationCheckStateModel } from 'src/app/shared/models/in/reservation-check-state-model';
 import { format } from 'util';
@@ -10,6 +10,8 @@ import { ReservationDetailsModel } from 'src/app/shared/models/out/reservation-d
 import { ReservationStateIntentModel } from 'src/app/shared/models/in/reservation-state-intent-model';
 import { ReservationInidividualReportModel } from 'src/app/shared/models/out/reservation-individual-report-model';
 import { ReservationReportInputModel } from 'src/app/shared/models/in/reservation-report-input-model';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +28,9 @@ export class ReservationService {
   }
 
   public getReservationState(reservationId: string): Observable<ReservationCheckStateModel>{
-    return this.http.get<ReservationCheckStateModel>(format(ReservationEndpoints.GET_RESERVATION_STATE, reservationId));
+    return this.http.get<ReservationCheckStateModel>(format(ReservationEndpoints.GET_RESERVATION_STATE, reservationId), 
+    { headers: { 'IgnoreInterceptors': 'yes' } }
+    );
   }
 
   public updateReservationState(reservationId: string,
