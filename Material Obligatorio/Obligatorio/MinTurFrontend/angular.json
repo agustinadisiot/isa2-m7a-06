@@ -126,5 +126,8 @@
       }
     }
   },
-  "defaultProject": "MinTurFrontend"
+  "defaultProject": "MinTurFrontend",
+  "cli": {
+    "analytics": "e0bd97b4-66da-4790-9bb6-83f6fb26a562"
+  }
 }
