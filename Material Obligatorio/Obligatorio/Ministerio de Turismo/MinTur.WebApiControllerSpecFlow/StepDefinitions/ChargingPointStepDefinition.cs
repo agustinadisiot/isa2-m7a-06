@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http.Headers;
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MinTur.Models.In;
 using Newtonsoft.Json;
@@ -51,7 +47,7 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
         }
 
         [Given(@"the user is admin")]
-        public async Task GivenTheUserIsAdmin()
+        public void GivenTheUserIsAdmin()
         {
        /*     string requestBody = JsonConvert.SerializeObject(new { email = "matias@admin.com", password = "admin" });
 
@@ -71,7 +67,7 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
         }
 
         [When(@"the user selects button to create a charging point")]
-        public async Task WhenTheUserSelectsButtonToCreateAChargingPoint()
+        public async void WhenTheUserSelectsButtonToCreateAChargingPoint()
         {
 
             string requestBody = JsonConvert.SerializeObject(new { name = _chargingPointModel.Name, address = _chargingPointModel.Address, description = _chargingPointModel.Description, regionId = _chargingPointModel.RegionId });
@@ -89,7 +85,7 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
 
             var client = new HttpClient();
             //client.DefaultRequestHeaders.Add("Authorization", _context.Get<String>("token"));
-            var response = await client.SendAsync(request).ConfigureAwait(false);
+            var response =  await client.SendAsync(request);
             try
             {
                 _context.Set(response.StatusCode, "ResponseStatusCode");

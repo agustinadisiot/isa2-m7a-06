@@ -4,7 +4,7 @@ A short summary of the feature
 
 @tag1
 Scenario: Create Charging Point Correctly
-	Given the name is "Ancap Maldonado4"
+	Given the name is "Ancap Maldonado5"
 	And the description is "First charging point of Uruguay"
 	And the address is "San Martin 2334"
 	And the regionId exists and is 1
