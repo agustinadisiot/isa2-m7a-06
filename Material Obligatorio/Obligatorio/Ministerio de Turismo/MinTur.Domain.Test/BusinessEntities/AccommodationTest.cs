@@ -75,8 +75,8 @@ namespace MinTur.Domain.Test.BusinessEntities
         {
             Accommodation accommodation = new Accommodation()
             {
-                CheckIn = new DateTime(2020, 9, 26),
-                CheckOut = new DateTime(2020, 9, 30)
+                CheckIn = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day),
+                CheckOut = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day +1)
             };
             accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Adult.ToString(), Amount = 3 });
             accommodation.Guests.Add(new GuestGroup() { GuestGroupType = GuestType.Kid.ToString(), Amount = 1 });
