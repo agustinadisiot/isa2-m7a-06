@@ -2,9 +2,9 @@ name: build-test-dotnet
 
 on:
   push:
-    branches: [ feature-TestAutomation ]
+    branches: [ main ]
   pull_request:
-    branches: [ feature-TestAutomation ]
+    branches: [ main ]
 
 jobs:
   build:
