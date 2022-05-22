@@ -26,11 +26,11 @@ jobs:
       run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
 
 
-    - name: Upload a Build Artificat 
+    - name: Upload a Build Artifcat 
       uses: actions/upload-artifact@v2.2.2
       with: 
         name: GitHubActionsDotNetDownloadableArtifact
-        path: ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/MinTur.WebApi/*.*"
+        path: ./*.*"
         
     
     - name: Test
