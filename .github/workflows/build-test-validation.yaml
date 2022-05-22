@@ -23,7 +23,7 @@ jobs:
       run: dotnet restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
     
     - name: Build
-      run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
+      run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln" 
 
 
     - name: Upload a Build Artifcat 
@@ -33,8 +33,8 @@ jobs:
         path: './Material Obligatorio/Obligatorio/Ministerio de Turismo/MinTur.WebApi/bin/Release/netcoreapp3.1/*'
         
     
-    - name: Test
-      run: dotnet test ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/Ministerio de Turismo.sln" -l:trx || true
+    - name: Testrt
+      run: dotnet test ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/Ministerio de Turismo.sln"  --filter FullyQualifiedName!~SpecFlow -l:trx || true
       shell: bash
     - if: always()
       name: Report
