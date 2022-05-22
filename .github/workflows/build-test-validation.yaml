@@ -2,7 +2,7 @@ name: build-test-dotnet
 
 on:
   push:
-    branches: [ bugfix-TestAutomationSpecFlow ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -23,7 +23,7 @@ jobs:
       run: dotnet restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
     
     - name: Build
-      run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
+      run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln" 
 
 
     - name: Upload a Build Artifcat 
