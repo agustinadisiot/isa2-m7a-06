@@ -4,7 +4,7 @@ on:
   push:
     branches: [ feature-TestAutomation ]
   pull_request:
-    branches: [ main ]
+    branches: [ feature-TestAutomation ]
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
       uses: actions/upload-artifact@v2.2.2
       with: 
         name: GitHubActionsDotNetDownloadableArtifact
-        path: ./"Material Obligatorio/Obligatorio/Ministerio de Turismo\MinTur.WebApi\bin\Release\netcoreapp3.1\*.*"
+        path: ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/MinTur.WebApi/bin/Release/netcoreapp3.1/*.*"
         
     
     - name: Test
