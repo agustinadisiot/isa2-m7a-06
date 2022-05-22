@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30503.244
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinTur.BusinessLogicInterface", "MinTur.BusinessLogicInterface\MinTur.BusinessLogicInterface.csproj", "{C9E4FD9C-4DB2-4F4C-B71F-72C101021A8F}"
 EndProject
@@ -42,6 +42,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinTur.XMLImporter.Test", "MinTur.XMLImporter.Test\MinTur.XMLImporter.Test.csproj", "{3B6A601F-4F2E-4A12-B15C-18BB0F3483DF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinTur.ImporterInterface", "MinTur.ImporterInterface\MinTur.ImporterInterface.csproj", "{28CA7422-461F-47A0-A504-859832AB6C91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinTur.WebApiControllerSpecFlow", "MinTur.WebApiControllerSpecFlow\MinTur.WebApiControllerSpecFlow.csproj", "{8EC67C4E-561A-4DA4-8233-33E510A538E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -293,6 +295,18 @@ Global
 		{28CA7422-461F-47A0-A504-859832AB6C91}.Release|x64.Build.0 = Release|Any CPU
 		{28CA7422-461F-47A0-A504-859832AB6C91}.Release|x86.ActiveCfg = Release|Any CPU
 		{28CA7422-461F-47A0-A504-859832AB6C91}.Release|x86.Build.0 = Release|Any CPU
+		{8EC67C4E-561A-4DA4-8233-33E510A538E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC67C4E-561A-4DA4-8233-33E510A538E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC67C4E-561A-4DA4-8233-33E510A538E3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8EC67C4E-561A-4DA4-8233-33E510A538E3}.Debug|x64.Build.0 = Debug|Any CPU
+		{8EC67C4E-561A-4DA4-8233-33E510A538E3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8EC67C4E-561A-4DA4-8233-33E510A538E3}.Debug|x86.Build.0 = Debug|Any CPU
+		{8EC67C4E-561A-4DA4-8233-33E510A538E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC67C4E-561A-4DA4-8233-33E510A538E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EC67C4E-561A-4DA4-8233-33E510A538E3}.Release|x64.ActiveCfg = Release|Any CPU
+		{8EC67C4E-561A-4DA4-8233-33E510A538E3}.Release|x64.Build.0 = Release|Any CPU
+		{8EC67C4E-561A-4DA4-8233-33E510A538E3}.Release|x86.ActiveCfg = Release|Any CPU
+		{8EC67C4E-561A-4DA4-8233-33E510A538E3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

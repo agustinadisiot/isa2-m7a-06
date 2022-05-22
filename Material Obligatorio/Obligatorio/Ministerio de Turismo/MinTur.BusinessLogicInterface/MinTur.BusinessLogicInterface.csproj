@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="SpecFlow" Version="3.9.74" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MinTur.Domain\MinTur.Domain.csproj" />
     <ProjectReference Include="..\MinTur.ImporterInterface\MinTur.ImporterInterface.csproj" />
   </ItemGroup>
