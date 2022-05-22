@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MinTur.Models.In;
@@ -13,11 +14,13 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
     {
         private readonly  ScenarioContext _context;
         private ChargingPointIntentModel _chargingPointModel = new ChargingPointIntentModel();
-    
-        
+        private int _chargingPointId;
+
+
         public ChargingPointStepDefinition(ScenarioContext scenarioContext)
         {
             _context = scenarioContext;
+            _chargingPointId = 0;
         }
         
 
@@ -44,6 +47,12 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
         public void GivenTheRegionIdExistsAndIs(int regionId)
         {
             _chargingPointModel.RegionId = regionId;
+        }
+
+        [Given(@"the charging point id is (.*)")]
+        public void GivenTheIdIs(int id)
+        {
+            _chargingPointId = id;
         }
 
         [Given(@"the user is admin")]
@@ -94,7 +103,28 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
             {
             }
         }
-        
+
+        [When(@"the user selects button to delete a charging point")]
+        public async void WhenTheUserSelectsButtonToDeleteAChargingPoint()
+        {
+
+            var request = new HttpRequestMessage(HttpMethod.Delete, $"http://localhost:5000/api/chargingPoints/{_chargingPointId}") 
+            {
+                
+            };
+
+            var client = new HttpClient();
+            //client.DefaultRequestHeaders.Add("Authorization", _context.Get<String>("token"));
+            var response = await client.SendAsync(request);
+            try
+            {
+                _context.Set(response.StatusCode, "ResponseStatusCode");
+            }
+            finally
+            {
+            }
+        }
+
         [Then("the result should be (.*)")]
         public void ThenTheResultShouldBe(int statusCode)
         {
