@@ -1,0 +1,23 @@
+- name: Test
+  run: dotnet test ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln" -l:trx || true
+  shell: bash
+- if: always()
+  name: Report
+  uses: dorny/test-reporter@v1
+  with:
+    name: DotNET Tests Results
+    path: '**/*.trx'
+    reporter: dotnet-trx
+    faile-on-error: 'false'
+
+- name: Upload a Build Artificat 
+  uses: actions/upload-artifact@v2.2.2
+  with: 
+    name: GitHubActionsDotNetDownloadArtifact
+    path: 
+  
+ - name: Upload test results
+   uses: actions/upload-artifact@v2.2.2
+   with:
+     name: GitHubActionsTestsResults
+     path: '**/*.trx'
