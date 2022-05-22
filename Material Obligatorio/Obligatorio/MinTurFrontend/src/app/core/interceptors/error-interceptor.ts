@@ -13,13 +13,17 @@ export class ErrorHandlerInterceptor implements HttpInterceptor{
   constructor(protected router: Router) { }
 
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
+    if (req.headers.get('IgnoreInterceptors') === "yes"){
+      var newhead = req.headers.delete('IgnoreInterceptors');
+      var newreq = req.clone({headers : newhead});
+      return next.handle(newreq);
+    }
     req = req.clone();
     return next.handle(req).pipe(catchError(error => this.handleError(error)));
   }
 
   public handleError(error: HttpErrorResponse): Observable<any>{
     let handled = false;
-
     if (error.error instanceof ErrorEvent){
       alert('Inténtalo nuevamente');
     }else{
