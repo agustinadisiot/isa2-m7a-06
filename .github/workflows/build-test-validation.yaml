@@ -1,0 +1,52 @@
+name: build-test-dotnet
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    name: Build and Test
+    steps:
+    
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 3.1.x
+        
+    - name: Restore dependencies
+      run: dotnet restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
+    
+    - name: Build
+      run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
+
+
+    - name: Upload a Build Artifcat 
+      uses: actions/upload-artifact@v2.2.2
+      with: 
+        name: BuildRelease
+        path: './Material Obligatorio/Obligatorio/Ministerio de Turismo/MinTur.WebApi/bin/Release/netcoreapp3.1/*'
+        
+    
+    - name: Test
+      run: dotnet test ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/Ministerio de Turismo.sln" -l:trx || true
+      shell: bash
+    - if: always()
+      name: Report
+      uses: dorny/test-reporter@v1
+      with:
+        name: DotNET Tests Results
+        path: '**/*.trx'
+        reporter: dotnet-trx
+        fail-on-error: 'false'
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: GitHubActionsTestsResults
+        path: '**/*.trx'
