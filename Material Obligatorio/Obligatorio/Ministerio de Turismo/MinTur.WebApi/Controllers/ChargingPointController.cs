@@ -30,7 +30,7 @@ namespace MinTur.WebApi.Controllers
         }
 
         [HttpPost]
-        [ServiceFilter(typeof(AdministratorAuthorizationFilter))]
+        //[ServiceFilter(typeof(AdministratorAuthorizationFilter))]
         public IActionResult CreateChargingPoint([FromBody] ChargingPointIntentModel chargingPointIntentModel)
         {
             ChargingPoint registeredChargingPoint = _chargingPointManager.RegisterChargingPoint(chargingPointIntentModel.ToEntity());
