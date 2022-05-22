@@ -34,8 +34,9 @@ export class CheckReservationInputsComponent implements OnInit {
 
     if (!this.displayError){
       this.reservationService.getReservationState(this.reservationUniqueCode)
-        .subscribe(reservationBasicInfo => this.loadReservationState(reservationBasicInfo),
-          (error: HttpErrorResponse) => this.showError(error));
+        .subscribe(reservationBasicInfo =>this.loadReservationState(reservationBasicInfo),
+          error => this.showError(error),
+          );
     }
   }
 
@@ -55,12 +56,13 @@ export class CheckReservationInputsComponent implements OnInit {
 
     if (this.reservationUniqueCode == null || !regex.test(this.reservationUniqueCode)){
       this.displayError = true;
-      this.errorMessage = 'El formato del codigo unico de la reserva es invalido';
+      this.errorMessage = 'El formato del código unico de la reserva es inválido';
     }
   }
 
   private showError(error: HttpErrorResponse): void {
-    console.log(error);
+    this.displayError = true;
+    this.errorMessage = 'No se encontró reserva con ese código';
   }
 
 }
