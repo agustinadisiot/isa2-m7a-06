@@ -112,7 +112,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
- testRunner.Given("the name is \"Ancap Maldonado4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the name is \"Ancap Maldonado5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
  testRunner.And("the description is \"First charging point of Uruguay\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
