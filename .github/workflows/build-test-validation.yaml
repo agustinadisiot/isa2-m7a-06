@@ -24,6 +24,9 @@ jobs:
     
     - name: Build
       run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
+           ls
+           
+      
 
 
     - name: Upload a Build Artificat 
