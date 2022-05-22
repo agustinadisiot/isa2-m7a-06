@@ -47,10 +47,10 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
             _chargingPointModel.RegionId = regionId;
         }
 
-        [Given(@"the user is admin")]
+/*        [Given(@"the user is admin")]
         public void GivenTheUserIsAdmin()
         {
-       /*     string requestBody = JsonConvert.SerializeObject(new { email = "matias@admin.com", password = "admin" });
+            string requestBody = JsonConvert.SerializeObject(new { email = "matias@admin.com", password = "admin" });
 
             var request = new HttpRequestMessage(HttpMethod.Post, $"http://localhost:5000/api/login/")
             {
@@ -64,11 +64,11 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
             var responseToken = await client.SendAsync(request).ConfigureAwait(false);
             _token = responseToken.Content.ToString();
 
-            _context.Set(responseToken.Content.ToString, "token");*/
-        }
+            _context.Set(responseToken.Content.ToString, "token");
+        }*/
 
         [When(@"the user selects button to create a charging point")]
-        public async void WhenTheUserSelectsButtonToCreateAChargingPoint()
+        public async Task WhenTheUserSelectsButtonToCreateAChargingPoint()
         {
 
             string requestBody = JsonConvert.SerializeObject(new { name = _chargingPointModel.Name, address = _chargingPointModel.Address, description = _chargingPointModel.Description, regionId = _chargingPointModel.RegionId });
