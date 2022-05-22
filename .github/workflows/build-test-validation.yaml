@@ -18,13 +18,23 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 3.1.x
+        
     - name: Restore dependencies
       run: dotnet restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
-    - name: Build
-      run: dotnet build --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
     
+    - name: Build
+      run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
+
+
+    - name: Upload a Build Artificat 
+      uses: actions/upload-artifact@v2.2.2
+      with: 
+        name: GitHubActionsDotNetDownloadableArtifact
+        path: ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/MinTur.WebApi/bin/release/netcoreapp3.1/*.*"
+
+
     - name: Test
-      run: dotnet test ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln" -l:trx || true
+      run: dotnet test ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/Ministerio de Turismo.sln" -l:trx || true
       shell: bash
     - if: always()
       name: Report
@@ -34,12 +44,6 @@ jobs:
         path: '**/*.trx'
         reporter: dotnet-trx
         fail-on-error: 'false'
-
-    - name: Upload a Build Artificat 
-      uses: actions/upload-artifact@v2.2.2
-      with: 
-        name: GitHubActionsDotNetDownloadableArtifact
-        path: ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/MinTur.WebApi/bin/release/netcoreapp3.1/*.*"
 
     - name: Upload test results
       uses: actions/upload-artifact@v2.2.2
