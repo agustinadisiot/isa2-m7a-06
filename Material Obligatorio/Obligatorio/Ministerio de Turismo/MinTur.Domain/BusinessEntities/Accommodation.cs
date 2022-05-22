@@ -21,10 +21,11 @@ namespace MinTur.Domain.BusinessEntities
             Guests = new List<GuestGroup>();
         }
 
-        public virtual void ValidOrFail(DateTime currentTime) 
+        public virtual bool ValidOrFail(DateTime currentTime) 
         {
-            ValidateDates(currentTime);
+            bool isValid = ValidateDates(currentTime);
             ValidateGuests();
+            return isValid;
         }
 
         public override bool Equals(object obj)
@@ -41,12 +42,14 @@ namespace MinTur.Domain.BusinessEntities
             return HashCode.Combine(Id);
         }
 
-        private void ValidateDates(DateTime currentTime) 
+        private bool ValidateDates(DateTime currentTime)
         {
-            if(CheckIn == null || CheckOut == null || CheckIn < currentTime)
+            if (CheckIn == null || CheckOut == null || CheckIn < currentTime)
                 throw new InvalidRequestDataException("Invalid Dates");
             else if (CheckOut <= CheckIn)
                 throw new InvalidRequestDataException("Check-Out can not be on the same day or come before Check-In");
+            else
+                return true;
         }
 
         private void ValidateGuests()
