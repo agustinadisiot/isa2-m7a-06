@@ -60,7 +60,13 @@ namespace MinTur.DataAccess.Repositories
             Region region = Context.Set<Region>().AsNoTracking().Where(r => r.Id == regionId).FirstOrDefault();
             return region != null;
         }
-        
-        
+
+        public ChargingPoint DeleteChargingPointById(int chargingPointId)
+        {
+            ChargingPoint existingPoint = GetChargingPointById(chargingPointId);
+            Context.Set<ChargingPoint>().Remove(existingPoint);
+            Context.SaveChanges();
+            return new ChargingPoint();
+        }
     }
 }

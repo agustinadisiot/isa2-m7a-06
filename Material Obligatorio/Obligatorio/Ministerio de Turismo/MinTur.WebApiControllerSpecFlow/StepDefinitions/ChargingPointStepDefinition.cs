@@ -14,15 +14,13 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
     {
         private readonly  ScenarioContext _context;
         private ChargingPointIntentModel _chargingPointModel = new ChargingPointIntentModel();
-    
-        
+
+
         public ChargingPointStepDefinition(ScenarioContext scenarioContext)
         {
             _context = scenarioContext;
         }
-        
 
-        
         [Given(@"the name is ""(.*)""")]
         public void GivenTheNameIs(string name)
         {
@@ -95,7 +93,7 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
             {
             }
         }
-        
+
         [Then("the result should be (.*)")]
         public void ThenTheResultShouldBe(int statusCode)
         {
