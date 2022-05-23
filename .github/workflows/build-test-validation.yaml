@@ -2,9 +2,9 @@ name: build-test-dotnet
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, staging ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, staging ]
 
 jobs:
   build:
@@ -33,7 +33,7 @@ jobs:
         path: './Material Obligatorio/Obligatorio/Ministerio de Turismo/MinTur.WebApi/bin/Release/netcoreapp3.1/*'
         
     
-    - name: Testrt
+    - name: Test
       run: dotnet test ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/Ministerio de Turismo.sln"  --filter FullyQualifiedName!~SpecFlow -l:trx || true
       shell: bash
     - if: always()
