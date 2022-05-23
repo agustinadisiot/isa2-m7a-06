@@ -8,6 +8,5 @@ Scenario: Create Charging Point Correctly
 	And the description is "First charging point of Uruguay"
 	And the address is "San Martin 2334"
 	And the regionId exists and is 1
-	And the user is admin
 	When the user selects button to create a charging point
 	Then the result should be 201
