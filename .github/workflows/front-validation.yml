@@ -37,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v2.2.2
         with:
           name: GitHubActionsTestsResults
-          path: './Material Obligatorio/Obligatorio/MinTurFrontend'
+          path: './Material Obligatorio/Obligatorio/MinTurFrontend/dist'
