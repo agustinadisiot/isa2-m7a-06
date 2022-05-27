@@ -26,8 +26,15 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+            
       - name: Build
         run: |
           npm install
           npm run build
         working-directory: './Material Obligatorio/Obligatorio/MinTurFrontend'
+        
+      - name: Upload build results
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: GitHubActionsTestsResults
+          path: './Material Obligatorio/Obligatorio/MinTurFrontend'
