@@ -97,6 +97,8 @@ jobs:
       - name: Push the image to DockerHub
         run: |
           docker push "ivanmonjardin/agil-front":"$GITHUB_SHA"
+          docker tag "ivanmonjardin/agil-front":"$GITHUB_SHA" "ivanmonjardin/agil-front" 
+          docker push "ivanmonjardin/agil-front"
           
       # Deploy the Docker image to the IBM Cloud Kubernetes cluster
       - name: Deploy to IKS
