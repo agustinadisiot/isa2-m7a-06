@@ -2,9 +2,9 @@ name: Build Angular
 
 on:
   push:
-    branches: [ feature-FrontBuildAutomation ]
+    branches: [ main ]
   pull_request:
-    branches: [ feature-FrontBuildAutomation ]
+    branches: [ main ]
 
 jobs:
   build-angular:
