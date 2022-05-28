@@ -1,0 +1,40 @@
+name: Build Angular
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-angular:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      
+      - name: Setup Cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+            
+      - name: Build
+        run: |
+          npm install
+          npm run build
+        working-directory: './Material Obligatorio/Obligatorio/MinTurFrontend'
+        
+      - name: Upload build results
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: FrontDist
+          path: './Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend'
