@@ -82,8 +82,8 @@ jobs:
       # Build the Docker image
       - name: Build with Docker
         run: |
-          cp './Material Obligatorio/Obligatorio/Docker-Front/Dockerfile' './Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/'
-          cp './Material Obligatorio/Obligatorio/Docker-Front/nginx.conf' './Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/'
+          cp './Material Obligatorio/Obligatorio/Docker-Front/Dockerfile' './Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/Dockerfile'
+          cp './Material Obligatorio/Obligatorio/Docker-Front/nginx.conf' './Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/nginx.conf'
           
           docker build -t "ivanmonjardin/agil-front":"$GITHUB_SHA" \
             --build-arg GITHUB_SHA="${GITHUB_SHA}" \
