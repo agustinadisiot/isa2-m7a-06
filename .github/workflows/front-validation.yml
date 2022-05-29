@@ -13,8 +13,6 @@ env:
   ICR_NAMESPACE: ${{ secrets.ICR_NAMESPACE }}
   IKS_CLUSTER: ${{ secrets.IKS_CLUSTER }} # name or id of cluster
   BACKEND_ENDPOINT: ${{ secrets.BACKEND_ENDPOINT}}
-  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME}}
-  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD}}
 
 
 jobs:
@@ -84,8 +82,8 @@ jobs:
       # Build the Docker image
       - name: Build with Docker
         run: |
-          cp './Material Obligatorio/Obligatorio/Docker-Front/Dockerfile'./Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/'
-          cp './Material Obligatorio/Obligatorio/Docker-Front/nginx.conf'./Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/'
+          cp './Material Obligatorio/Obligatorio/Docker-Front/Dockerfile' './Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/'
+          cp './Material Obligatorio/Obligatorio/Docker-Front/nginx.conf' './Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/'
           
           docker build -t "ivanmonjardin/agil-front":"$GITHUB_SHA" \
             --build-arg GITHUB_SHA="${GITHUB_SHA}" \
