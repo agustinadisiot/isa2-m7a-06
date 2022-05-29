@@ -2,7 +2,7 @@ name: Build Angular
 
 on:
   push:
-    branches: [ temp ]
+    branches: [ feature-CloudDeploy ]
   pull_request:
     branches: [ temp ]
 
