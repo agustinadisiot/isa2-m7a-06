@@ -69,8 +69,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
-          username: "$DOCKER_USERNAME"
-          password: "$DOCKER_PASSWORD"
+          username: "${DOCKER_USERNAME}"
+          password: "${DOCKER_PASSWORD}"
       
       # Changes endpoint of backend
       - uses: actions/checkout@v2
@@ -78,7 +78,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: 'http://localhost:5000/api'
-          replace: "$BACKEND_ENDPOINT"
+          replace: "${BACKEND_ENDPOINT}"
           include: "./Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/**"
       
       # Build the Docker image
@@ -88,19 +88,19 @@ jobs:
           cp './Material Obligatorio/Obligatorio/Docker-Front/nginx.conf'./Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/'
           
           docker build -t "ivanmonjardin/agil-front":"$GITHUB_SHA" \
-            --build-arg GITHUB_SHA="$GITHUB_SHA" \
-            --build-arg GITHUB_REF="$GITHUB_REF" .
+            --build-arg GITHUB_SHA="${GITHUB_SHA}" \
+            --build-arg GITHUB_REF="${GITHUB_REF}" .
       
       # Push the image to DockerHub
       - name: Push the image to DockerHub
         run: |
-          docker push "ivanmonjardin/agil-front":"$GITHUB_SHA"
-          docker tag "ivanmonjardin/agil-front":"$GITHUB_SHA" "ivanmonjardin/agil-front" 
+          docker push "ivanmonjardin/agil-front":"${GITHUB_SHA}"
+          docker tag "ivanmonjardin/agil-front":"${GITHUB_SHA}" "ivanmonjardin/agil-front" 
           docker push "ivanmonjardin/agil-front"
           
       # Deploy the Docker image to the IBM Cloud Kubernetes cluster
       - name: Deploy to IKS
         run: |
-          ibmcloud ks cluster config --cluster $IKS_CLUSTER
+          ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
           kubectl config current-context
           kubectl rollout restart deployment/front
