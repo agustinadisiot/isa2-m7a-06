@@ -64,10 +64,8 @@ jobs:
       # Authenticate with IBM Cloud CLI 
       - name: Authenticate with IBM Cloud CLI
         run: |
-          ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r "${IBM_CLOUD_REGION}" -g default
-          ibmcloud cr region-set "${IBM_CLOUD_REGION}"
-          ibmcloud cr login
-      
+          ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r "${IBM_CLOUD_REGION}" -g Default
+          
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
