@@ -2,6 +2,7 @@ using MinTur.BusinessLogicInterface.ResourceManagers;
 using MinTur.DataAccessInterface.Facades;
 using MinTur.Domain.BusinessEntities;
 using System;
+using System.Collections.Generic;
 
 namespace MinTur.BusinessLogic.ResourceManagers
 {
@@ -17,6 +18,11 @@ namespace MinTur.BusinessLogic.ResourceManagers
         public ChargingPoint DeleteChargingPoint(int id)
         {
             return _repositoryFacade.DeleteChargingPointById(id);
+        }
+
+        public List<ChargingPoint> GetAllChargingPoints()
+        {
+            return _repositoryFacade.GetAllChargingPoints();
         }
 
         public ChargingPoint GetChargingPointById(int chargingPoint)

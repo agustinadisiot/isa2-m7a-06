@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using MinTur.BusinessLogicInterface.ResourceManagers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
@@ -21,6 +23,15 @@ namespace MinTur.WebApi.Controllers
         }
         
 
+        [HttpGet()]
+        public IActionResult GetAllChargingPoints()
+        {
+            List<ChargingPoint> retrievedChargingPoints = _chargingPointManager.GetAllChargingPoints();
+            List<ChargingPointBasicInfoModel> chargingPointModels = retrievedChargingPoints.Select(
+                c => new ChargingPointBasicInfoModel(c)).ToList();
+            return Ok(chargingPointModels);
+        }
+        
         [HttpGet("{id:int}")]
         public IActionResult GetSpecificChargingPoint(int id)
         {

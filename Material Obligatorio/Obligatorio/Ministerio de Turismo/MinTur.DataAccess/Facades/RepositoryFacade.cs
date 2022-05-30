@@ -174,5 +174,10 @@ namespace MinTur.DataAccess.Facades
         {
             return _chargingPointRepository.DeleteChargingPointById(chargingPointId);
         }
+
+        public List<ChargingPoint> GetAllChargingPoints()
+        {
+            return _chargingPointRepository.GetAllChargingPoints();
+        }
     }
 }

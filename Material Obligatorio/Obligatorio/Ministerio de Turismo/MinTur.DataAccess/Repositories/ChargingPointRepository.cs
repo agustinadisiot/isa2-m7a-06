@@ -68,5 +68,10 @@ namespace MinTur.DataAccess.Repositories
             Context.SaveChanges();
             return new ChargingPoint();
         }
+
+        public List<ChargingPoint> GetAllChargingPoints()
+        {
+            return Context.Set<ChargingPoint>().AsNoTracking().Include(t => t.Region).ToList();
+        }
     }
 }

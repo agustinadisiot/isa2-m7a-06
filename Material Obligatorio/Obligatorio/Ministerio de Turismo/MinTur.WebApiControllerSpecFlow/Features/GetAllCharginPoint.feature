@@ -6,10 +6,12 @@ A short summary of the feature
 Scenario: Get All Charging Point Correctly
 	Given existing charging points
 	When the user selects button to get all charging points in the lateral menu
-	Then the result should be a list of charging points
+	Then a list of charging points should be returned
 
 Scenario: Get All Charging Points Empty List 
 	Given there are not charging points
 	When the user selects button to get all charging points in the lateral menu
-	Then the result should be an empty list
+	Then an empty list of charging points should be returned
+
+
 

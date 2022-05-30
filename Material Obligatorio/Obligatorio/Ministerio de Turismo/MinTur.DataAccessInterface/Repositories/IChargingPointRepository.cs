@@ -9,5 +9,8 @@ namespace MinTur.DataAccessInterface.Repositories
         int StoreChargingPoint(ChargingPoint chargingPoint);
         ChargingPoint GetChargingPointById(int chargingPointId);
         ChargingPoint DeleteChargingPointById(int chargingPointId);
+
+        List<ChargingPoint> GetAllChargingPoints();
+
     }
 }
