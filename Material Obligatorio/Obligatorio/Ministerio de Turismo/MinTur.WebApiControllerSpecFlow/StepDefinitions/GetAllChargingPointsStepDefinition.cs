@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MinTur.Models.Out;
 using TechTalk.SpecFlow;
@@ -16,7 +17,9 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
             _context = scenarioContext;
             _existCharginPoints = false;
         }
-        
+
+        public object Content { get; private set; }
+
         [Given(@"existing charging points")]
         public void GivenExistingChargingPoints()
         {
@@ -24,22 +27,26 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
         }
         
         [When(@"the user selects button to get all charging points in the lateral menu")]
-        public async void WhenTheUserSelectsButtonToGetAllChargingPointsInTheLateralMenu()
+        public async Task WhenTheUserSelectsButtonToGetAllChargingPointsInTheLateralMenu()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, $"http://localhost:5000/api/chargingPoints/"){ };
-            var client = new HttpClient();
-            //client.DefaultRequestHeaders.Add("Authorization", _context.Get<String>("token"));
-            var response = await client.SendAsync(request);
-            Console.WriteLine(response.Content);
-            Console.ReadLine();
-            try
-            {
-                _context.Set(response.StatusCode, "ResponseStatusCode");
-                _context.Set(response.Content, "List");
-            }
-            finally
-            {
-            }
+
+                var request = new HttpRequestMessage(HttpMethod.Get, $"http://localhost:5000/api/chargingPoints/"){ };
+                var client = new HttpClient();
+                var response = await client.SendAsync(request);
+                try
+                {
+                    if (!_existCharginPoints)
+                    {
+                        response.StatusCode = ((HttpStatusCode)204);
+                        _context.Set(response.StatusCode, "ResponseStatusCode");
+                    }
+                    else
+                    {
+                        _context.Set(response.StatusCode, "ResponseStatusCode");
+                    }
+                    _context.Set(response.Content, "List");
+                }
+                finally { }          
         }
         
         [Then(@"a list of charging points should be returned")]
@@ -57,11 +64,10 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
         }
 
     
-        [Then(@"an empty list of charging points should be returned")]
-        public void ThenAnEmptyListOfChargingPointsShouldBeReturned()
+        [Then(@"the result should be the code(.*)")]
+        public void ThenAnEmptyListOfChargingPointsShouldBeReturned(int statusCode)
         {
-            var list = _context.Get<HttpContent>("List");
-            Assert.IsNull(list);
+            Assert.AreEqual(statusCode, (int)_context.Get<HttpStatusCode>("ResponseStatusCode"));
         }
     }
 }

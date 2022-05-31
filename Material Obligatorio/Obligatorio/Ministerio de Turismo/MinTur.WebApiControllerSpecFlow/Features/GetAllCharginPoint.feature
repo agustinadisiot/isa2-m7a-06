@@ -11,7 +11,7 @@ Scenario: Get All Charging Point Correctly
 Scenario: Get All Charging Points Empty List 
 	Given there are not charging points
 	When the user selects button to get all charging points in the lateral menu
-	Then an empty list of charging points should be returned
+	Then the result should be the code 204
 
 
 

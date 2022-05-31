@@ -66,7 +66,7 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
         }*/
 
         [When(@"the user selects button to create a charging point")]
-        public async void WhenTheUserSelectsButtonToCreateAChargingPoint()
+        public async Task WhenTheUserSelectsButtonToCreateAChargingPoint()
         {
 
             string requestBody = JsonConvert.SerializeObject(new { name = _chargingPointModel.Name, address = _chargingPointModel.Address, description = _chargingPointModel.Description, regionId = _chargingPointModel.RegionId });

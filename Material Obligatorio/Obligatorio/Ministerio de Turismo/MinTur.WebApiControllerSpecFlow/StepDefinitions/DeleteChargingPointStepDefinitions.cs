@@ -26,7 +26,7 @@ namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
         }
 
         [When(@"the user selects button to delete a charging point")]
-        public async void WhenTheUserSelectsButtonToDeleteAChargingPoint()
+        public async Task WhenTheUserSelectsButtonToDeleteAChargingPoint()
         {
             var request = new HttpRequestMessage(HttpMethod.Delete, $"http://localhost:5000/api/chargingPoints/{_chargingPointId}"){ };
             var client = new HttpClient();
