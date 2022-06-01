@@ -36,7 +36,21 @@ import { ReservationReportModule } from './feature-modules/reservation-report/re
 import { ImportingComponent } from './feature-modules/importing/importing.component';
 import { ImportingModule } from './feature-modules/importing/importing.module';
 // tslint:disable-next-line:max-line-length
-import { AdminSpecificRoutes, ImporterRoutes, RegionRoutes, ReservationRoutes, ResortRoutes, ReviewRoutes, SessionRoutes, TouristPointRoutes } from './core/routes';
+import {
+  AdminSpecificRoutes,
+  ChargingPointRoutes,
+  ImporterRoutes,
+  RegionRoutes,
+  ReservationRoutes,
+  ResortRoutes,
+  ReviewRoutes,
+  SessionRoutes,
+  TouristPointRoutes
+} from './core/routes';
+import {
+  ExploreChargingPointsComponent
+} from "./feature-modules/explore-charging-points/explore-charging-points.component";
+import {ExploreChargingPointsModule} from "./feature-modules/explore-charging-points/explore-charging-points.module";
 
 const routes: Routes = [
   { path: '', redirectTo: RegionRoutes.REGIONS, pathMatch: 'full'},
@@ -44,6 +58,7 @@ const routes: Routes = [
   { path: RegionRoutes.REGIONS, component: ExploreRegionsComponent},
   { path: ReservationRoutes.CHECK_RESERVATION, component: CheckReservationComponent},
   { path: TouristPointRoutes.TOURIST_POINTS, component: ExploreTouristPointsComponent},
+  {path: ChargingPointRoutes.CHARGING_POINTS, component: ExploreChargingPointsComponent},
   { path: ResortRoutes.RESORTS, component: ExploreResortsComponent},
   { path: ResortRoutes.RESORT_DETAIL, component: ExploreOneResortComponent},
   { path: ReviewRoutes.REVIEW, component: SubmitReviewComponent},
@@ -65,6 +80,7 @@ const routes: Routes = [
   imports: [
     ExploreRegionsModule,
     ExploreTouristPointsModule,
+    ExploreChargingPointsModule,
     ExploreResortsModule,
     ExploreOneResortModule,
     SubmitReviewModule,

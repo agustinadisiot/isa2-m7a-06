@@ -1,0 +1,20 @@
+<div class="flex flex-col">
+  <div *ngFor="let touristPoint of chargingPoints" (click)="chooseChargingPoint(touristPoint.id)"
+       class="border-4 rounded-3xl m-3 p-3 flex flex-col lg:flex-row cursor-pointer"
+       [class]="{'border-pink': isChargingPointCardChosen(touristPoint.id),
+              'hover:border-purple': !isChargingPointCardChosen(touristPoint.id)}">
+    <img [src]="touristPoint.image.safeResourceURLData" class="w-4/6 sm:3/6 lg:w-2/6 place-self-center h-auto mr-3 flex-shrink-0" />
+    <div class="flex flex-col">
+      <p class="font-semibold text-indigo text-xl">{{touristPoint.name}}</p>
+      <p class="text-justify">{{touristPoint.description}}</p>
+      <div class="flex flex-row">
+        <p class="text-pink font-semibold">Categorias: </p>
+        <p *ngFor="let category of touristPoint.categories" class="ml-2"> {{category.name}} </p>
+      </div>
+      <div class="flex flex-row">
+        <p class="text-pink font-semibold">Region: </p>
+        <p class="ml-2"> {{touristPoint.region.name}} </p>
+      </div>
+    </div>
+  </div>
+</div>

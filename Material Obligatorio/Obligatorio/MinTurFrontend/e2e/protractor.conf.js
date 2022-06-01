@@ -19,4 +19,7 @@ exports.config = {
     require: './steps/*.js', // This is where we'll be writing our actual tests
   },
 
+  baseURL: 'http://localhost:4200/',
 };
+
+

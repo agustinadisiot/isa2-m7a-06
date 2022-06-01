@@ -1,0 +1,7 @@
+<app-page-explanation [title]="explanationTitle" [explanation]="explanationDescription"></app-page-explanation>
+<div class="flex flex-col sm:flex-row justify-around">
+
+  <div class="w-full sm:w-4/5 flex flex-col">
+    <app-charging-point-list (chosenChargingPointIdChange)="updateChosenChargingPointId($event)"></app-charging-point-list>
+  </div>
+</div>
