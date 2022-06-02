@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ChargingPointService } from 'src/app/core/http-services/charging-point/charging-point.service';
 import { ChargingPointBasicInfoModel } from 'src/app/shared/models/out/charging-point-basic-info-model';
@@ -13,7 +13,6 @@ export class ChargingPointListComponent implements OnInit {
   public chargingPoints: ChargingPointBasicInfoModel[] = [];
   public chosenChargingPointId?: number;
   @Output() chosenChargingPointIdChange = new EventEmitter<number>();
-
   constructor(private activatedRoute: ActivatedRoute, private chargingPointService: ChargingPointService,
                private router: Router) { }
 
@@ -26,7 +25,9 @@ export class ChargingPointListComponent implements OnInit {
     //this.loadParams();
 
     this.chargingPointService.allChargingPoints()
-      .subscribe(chargingPoints => this.loadChargingPoint(chargingPoints), (error: HttpErrorResponse) => this.showError(error));
+      .subscribe(chargingPoints => this.loadChargingPoint(chargingPoints), (error: HttpErrorResponse) => {
+        this.showError(error)
+      });
   }
 
   public chooseChargingPoint(chargingPointId?: number): void{

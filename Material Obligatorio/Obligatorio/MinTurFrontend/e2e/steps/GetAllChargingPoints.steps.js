@@ -26,13 +26,14 @@ When(/^I wait for (\d+) ms$/, function (timeToWait, callback) {
   setTimeout(callback, timeToWait);
 });
 
-Then(/^the page should load a list of Charging Points$/, function () {
-  let chargingPoints = element.all(by.css('chargingPoints'))
-  expect(chargingPoints.count()).to.eventually.notEmpty().and.notify(callback);
+Then(/^the page should load a list of Charging Points$/, function (callback) {
+  let chargingPoints = element(by.css('chargingPoints'))
+  console.log(chargingPoints)
+  expect(chargingPoints.count()).to.eventually.equal("").and.notify(callback);
 });
 
-Then(/^the page should show a message saying "([^"]*)"$/, function () {
-  let chargingPoints = element.all(by.repeater('chargingPoints'))
-  expect(chargingPoints.count()).to.eventually.equal(not (null)).and.notify(callback);
-  expect(chargingPoints.get(1).getItem().getId()).to.eventually.equal(1).and.notify(callback);
+Then(/^the page should show a message saying "([^"]*)"$/, function (callback, message) {
+  let chargingPoints = element(by.css('errorLoadingChargingPoints'))
+  console.log(chargingPoints)
+  expect(chargingPoints.length() !== 0).and.notify(callback);
 });
