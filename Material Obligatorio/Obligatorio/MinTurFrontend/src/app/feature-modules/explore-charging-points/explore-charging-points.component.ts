@@ -19,7 +19,6 @@ export class ExploreChargingPointsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private regionService: RegionService, private router: Router) { }
 
   ngOnInit(): void{
-    this.validateRegionIdParam();
     this.populateExplanationParams();
   }
 
@@ -27,22 +26,9 @@ export class ExploreChargingPointsComponent implements OnInit {
     this.chosenChargingPointId = chargingPointId;
   }
 
-  private validateRegionIdParam(): void{
-    let regionId: number;
-
-    this.activatedRoute.queryParamMap.subscribe(p => regionId = +p.get('regionId'));
-    this.regionService.oneRegion(regionId).subscribe(region => this.loadCurrentRegion(region));
-  }
-
-  private loadCurrentRegion(region: RegionBasicInfoModel): void{
-    this.currentRegion = region;
-  }
-
-
   private populateExplanationParams(): void{
-    this.explanationTitle = 'Elige un Punto de carga';
-    this.explanationDescription = 'Selecciona uno de los siguientes puntos turisticos y los detalles sobre su estadia para ver los hospedajes disponibles.';
+    this.explanationTitle = 'Estos son todos los Puntos de carga';
+    this.explanationDescription = 'Si conoce alguno más, por favor agrégelo. Si alguno esta desactualizado, por favor elimínelo.';
   }
-
 
 }

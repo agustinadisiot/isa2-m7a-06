@@ -7,7 +7,7 @@ import { TouristPointSearchModel } from 'src/app/shared/models/in/tourist-point-
 import { TouristPointBasicInfoModel } from 'src/app/shared/models/out/tourist-point-basic-info-model';
 
 @Component({
-  selector: 'app-charging-point-list',
+  selector: 'app-tourist-point-list',
   templateUrl: './tourist-point-list.component.html',
   styleUrls: []
 })

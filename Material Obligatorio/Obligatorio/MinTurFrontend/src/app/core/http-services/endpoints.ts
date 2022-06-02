@@ -35,7 +35,7 @@ export enum TouristPointEndpoints {
 }
 
 export enum ChargingPointEndpoints {
-  GET_CHARGING_POINTS = 'touristPoints',
+  GET_CHARGING_POINTS = 'chargingPoints',
 }
 
 export enum SessionEndpoints {
