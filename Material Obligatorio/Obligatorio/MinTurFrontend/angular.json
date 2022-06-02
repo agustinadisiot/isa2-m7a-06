@@ -128,5 +128,6 @@
   },
   "defaultProject": "MinTurFrontend",
   "cli": {
+    "analytics": false
   }
 }
