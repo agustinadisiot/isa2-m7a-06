@@ -1,18 +1,18 @@
 <div class="flex flex-col">
-  <div *ngIf="chargingPoints.length == 0" >
-    <p id="errorLoadingChargingPoints" error = "Error al cargar ">
-        No hay puntos de carga por el momento.
+  <div *ngIf="errorLoadingChargingPoints || chargingPoints.length == 0" >
+    <p id="loadIncorrectly">
+      No hay puntos de carga por el momento.
     </p>
   </div>
-  <div *ngIf="chargingPoints.length != 0" >
+  <div *ngIf="!errorLoadingChargingPoints && chargingPoints.length != 0" >
     <div *ngFor="let chargingPoint of chargingPoints" (click)="chooseChargingPoint(chargingPoint.id)"
          class="border-4 rounded-3xl m-3 p-3 flex flex-col lg:flex-row cursor-pointer"
          [class]="{'border-pink': isChargingPointCardChosen(chargingPoint.id),
-              'hover:border-purple': !isChargingPointCardChosen(chargingPoint.id)}" id="loadingChargingPointsCorrectly">
+              'hover:border-purple': !isChargingPointCardChosen(chargingPoint.id)}" >
       <div class="flex flex-col">
-        <p class="font-semibold text-indigo text-xl">{{chargingPoint.name}}</p>
+        <p id="loadCorrectly" class="font-semibold text-indigo text-xl">{{chargingPoint.name}}</p>
         <p class="text-justify">{{chargingPoint.description}}</p>
-        <div class="flex flex-row">
+        <div class="flex flex-row" >
           <p class="text-pink font-semibold">Region: </p>
           <p class="ml-2"> {{chargingPoint.region.name}}</p>
         </div>
