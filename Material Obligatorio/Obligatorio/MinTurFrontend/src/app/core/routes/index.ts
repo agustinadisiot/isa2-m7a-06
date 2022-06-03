@@ -29,6 +29,7 @@ export enum TouristPointRoutes {
 
 export enum ChargingPointRoutes {
   CHARGING_POINTS = 'explore/charging-points',
+  CREATE_CHARGING_POINT = 'explore/create-charging-point'
 }
 
 export enum SessionRoutes {
