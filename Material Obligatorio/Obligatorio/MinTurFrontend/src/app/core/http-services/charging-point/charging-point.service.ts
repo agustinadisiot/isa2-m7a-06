@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ChargingPointBasicInfoModel} from "../../../shared/models/out/charging-point-basic-info-model";
 import { ChargingPointIntentModel } from 'src/app/shared/models/out/charging-point-intent-model';
+import { format } from 'util';
 
 
 @Injectable({
@@ -21,4 +22,8 @@ export class ChargingPointService {
   public createChargingsPoint(newChargingPoint: ChargingPointIntentModel): Observable<ChargingPointBasicInfoModel[]> {
      return this.http.post<ChargingPointBasicInfoModel[]>(ChargingPointEndpoints.GET_CHARGING_POINTS, newChargingPoint);
    }
+
+  public deleteChargingPoint(chargingPointId: number): Observable<void>{
+    return this.http.delete<void>(format(ChargingPointEndpoints.DELETE_ONE_CHARGING_POINT,chargingPointId)); //, chargingPointId
+  }
 }

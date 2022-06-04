@@ -1,6 +1,29 @@
-<div class="flex flex-col">
+
+<div class="">
+  <!-- flex flex-col  justify-right justify-around -->
+  <div class="mt-1 justify-right">
+    <button (click)="chargingPointForm()"
+      class="w-40 h-10 mt-2 ml-4 bg-indigo-700 hover:bg-white text-white font-semibold
+        hover:text-indigo p-2 border border-indigo rounded">
+      Crear Nuevo
+    </button>
+
+    <button (click)="deleteChargingPoint()"
+    class="w-40 h-10 mt-2 ml-4 bg-indigo-700 hover:bg-white text-white font-semibold
+      hover:text-indigo p-2 border border-indigo rounded">
+    Eliminar
+  </button>
+
+  </div>
+
+  <div class="w-full sm:w-4/5 flex flex-col">
+  
+  <!-- chargin point list -->
+  <!-- flex flex-col -->
+<div class="">
+
   <div *ngIf="errorLoadingChargingPoints || chargingPoints.length == 0" >
-    <p id="loadIncorrectly">
+    <p id="loadIncorrectly" class="ml-4 mt-4">
       No hay puntos de carga por el momento.
     </p>
   </div>
@@ -19,5 +42,11 @@
       </div>
     </div>
   </div>
-
+  
 </div>
+<!-- end of charging point list -->
+
+  </div>
+</div>
+
+
