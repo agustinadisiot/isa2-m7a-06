@@ -18,8 +18,8 @@ Given(/^I view the "([^"]*)"$/, function (url, callback) {
 });
 
 When(
-  /^i type "([^"]*)" in field "([^"]*)"$/,
-  function (inputTextEntry, inputName) {   
+  /^I type "([^"]*)" in the field "([^"]*)"$/,
+  function (inputTextEntry, inputName) {
     return browser.driver
       .findElement(by.css('[formControlName="' + inputName + '"]'))
       .sendKeys(inputTextEntry);
@@ -27,14 +27,14 @@ When(
   );
 
 When(
-  /^i choose "([^"]*)" in the combo "([^"]*)"$/,
-  function (inputTextEntry, inputName) {   
+  /^I choose "([^"]*)" in the combo "([^"]*)"$/,
+  function (inputTextEntry, inputName) {
     return browser.driver
       .findElement(by.css('[formControlName="' + inputName + '"]'))
       .sendKeys(inputTextEntry);
     }
   );
-  
+
 
 When(/^I click on button Crear$/, function (callback) {
   element(by.id('createChargingPoint')).click();
