@@ -35,6 +35,10 @@ import { ReservationReportComponent } from './feature-modules/reservation-report
 import { ReservationReportModule } from './feature-modules/reservation-report/reservation-report.module';
 import { ImportingComponent } from './feature-modules/importing/importing.component';
 import { ImportingModule } from './feature-modules/importing/importing.module';
+import { CreateChargingPointComponent } from './feature-modules/create-charging-point/create-charging-point.component';
+import { CreateChargingPointModule } from './feature-modules/create-charging-point/create-charging-point.module';
+
+
 // tslint:disable-next-line:max-line-length
 import {
   AdminSpecificRoutes,
@@ -45,12 +49,13 @@ import {
   ResortRoutes,
   ReviewRoutes,
   SessionRoutes,
-  TouristPointRoutes
+  TouristPointRoutes,
 } from './core/routes';
 import {
   ExploreChargingPointsComponent
 } from "./feature-modules/explore-charging-points/explore-charging-points.component";
 import {ExploreChargingPointsModule} from "./feature-modules/explore-charging-points/explore-charging-points.module";
+
 
 const routes: Routes = [
   { path: '', redirectTo: RegionRoutes.REGIONS, pathMatch: 'full'},
@@ -59,6 +64,7 @@ const routes: Routes = [
   { path: ReservationRoutes.CHECK_RESERVATION, component: CheckReservationComponent},
   { path: TouristPointRoutes.TOURIST_POINTS, component: ExploreTouristPointsComponent},
   {path: ChargingPointRoutes.CHARGING_POINTS, component: ExploreChargingPointsComponent},
+  {path: ChargingPointRoutes.CREATE_CHARGING_POINT, component: CreateChargingPointComponent},
   { path: ResortRoutes.RESORTS, component: ExploreResortsComponent},
   { path: ResortRoutes.RESORT_DETAIL, component: ExploreOneResortComponent},
   { path: ReviewRoutes.REVIEW, component: SubmitReviewComponent},
@@ -90,6 +96,7 @@ const routes: Routes = [
     AdminDetailModule,
     AdminCreateModule,
     CreateTouristPointModule,
+    CreateChargingPointModule,
     UpdateResortAvailabilityModule,
     UpdateReservationStateModule,
     ReservationReportModule,
