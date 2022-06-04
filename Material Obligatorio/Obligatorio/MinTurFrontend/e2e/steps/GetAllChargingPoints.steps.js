@@ -34,9 +34,9 @@ Then(/^the page should load a list of Charging Points$/, function (callback) {
 });
 
 
-Then(/^the page should show a message saying "([^"]*)"$/, function (callback, message) {
+Then(/^the page should show a message saying "([^"]*)"$/, function (message) {
     let errorLoading = element(by.id('loadIncorrectly'))
-    expect(errorLoading.getText()).to.eventually.equal(message).and.notify(callback);
+    expect(errorLoading.getText()).to.eventually.equal(message);
 
 });
 

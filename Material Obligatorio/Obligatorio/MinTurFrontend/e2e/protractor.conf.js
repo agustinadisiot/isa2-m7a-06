@@ -2,7 +2,7 @@
 exports.config = {
 
   seleniumAddress: 'http://localhost:4444/wd/hub', // This is targetting your local running instance of the selenium webdriver
-
+  //directConnect: true,
   specs: [
     './specs/*.feature'
   ],
