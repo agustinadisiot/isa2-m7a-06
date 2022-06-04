@@ -17,11 +17,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 3.1.x
-    
-    
-    - name: Install dependencies
-      run: dotnet add package SpecFlow
+        dotnet-version: 3.1
   
     - name: Restore dependencies
       run: dotnet restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
