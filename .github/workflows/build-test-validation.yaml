@@ -2,7 +2,7 @@ name: build-test-dotnet
 
 on:
   push:
-    branches: [ main, staging ]
+    branches: [ main, staging, bugfix-SpecFlowAction ]
   pull_request:
     branches: [ main, staging ]
 
@@ -18,7 +18,11 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 3.1.x
-        
+    
+    
+    - name: Install dependencies
+      run: dotnet add package SpecFlow
+  
     - name: Restore dependencies
       run: dotnet restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
     
