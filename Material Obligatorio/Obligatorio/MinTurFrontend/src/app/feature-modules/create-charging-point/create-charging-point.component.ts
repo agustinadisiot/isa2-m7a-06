@@ -1,6 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from 'src/app/core/http-services/category/category.service';
 import { RegionService } from 'src/app/core/http-services/region/region.service';
 import { RegionBasicInfoModel } from 'src/app/shared/models/out/region-basic-info-model';
 import { ChargingPointIntentModel } from 'src/app/shared/models/out/charging-point-intent-model';

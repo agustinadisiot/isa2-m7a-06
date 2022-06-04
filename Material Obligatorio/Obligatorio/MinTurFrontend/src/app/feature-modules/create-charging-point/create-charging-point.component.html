@@ -21,7 +21,7 @@
       </mat-form-field>
     </div>
     <div class="flex flex-row ml-2">
-      <p class="text-indigo font-semibold self-center">Address:</p>
+      <p class="text-indigo font-semibold self-center">Dirección:</p>
       <mat-form-field class="ml-3 self-start w-4/5" >
         <mat-label>ej: Parada 12, punta del este, Maldonado</mat-label>
         <input type="text" matInput (input)="setAddress($event.target.value)">
@@ -37,7 +37,7 @@
       </mat-form-field>
     </div>
     <div class="mt-1 flex flex-col justify-around">
-      <button (click)="createTouristPoint()"
+      <button (click)="createChargingPoint()"
         class="w-40 h-10 mt-2 self-center bg-indigo-700 hover:bg-white text-white font-semibold
           hover:text-indigo p-2 border border-indigo rounded">
         Crear
@@ -58,7 +58,7 @@
     </span>
   </div>
 </div>
-<div *ngIf="justCreatedTouristPoint" class="flex flex-row justify-around mb-8 mt-8">
+<div *ngIf="justCreatedChargingPoint" class="flex flex-row justify-around mb-8 mt-8">
   <div class="flex flex-col w-2/3 bg-gray-300 p-3 rounded-2xl border-2 border-purple">
     <span class="h-3 w-3 flex">
       <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>

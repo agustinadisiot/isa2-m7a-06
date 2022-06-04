@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { ChargingPointBasicInfoModel} from "../../../shared/models/out/charging-point-basic-info-model";
 import { ChargingPointIntentModel } from 'src/app/shared/models/out/charging-point-intent-model';
 
-//import { ChargingPointIntentModel } from 'src/app/shared/models/out/tourist-point-intent-model';
 
 @Injectable({
   providedIn: 'root'
