@@ -24,7 +24,7 @@
 
   <div *ngIf="errorLoadingChargingPoints || chargingPoints.length == 0" >
     <p id="loadIncorrectly" class="ml-4 mt-4">
-      No hay puntos de carga por el momento.
+      {{errorLoadingChargingPoints}}
     </p>
   </div>
   <div *ngIf="!errorLoadingChargingPoints && chargingPoints.length != 0" >

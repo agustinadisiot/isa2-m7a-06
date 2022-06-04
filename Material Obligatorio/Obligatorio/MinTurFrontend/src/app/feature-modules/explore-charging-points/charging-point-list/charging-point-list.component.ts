@@ -79,7 +79,10 @@ export class ChargingPointListComponent implements OnInit {
 
   public deleteChargingPoint()
   {
-    this.loadChargingPoint();
+    this.chargingPointService.deleteChargingPoint(this.chosenChargingPointId)
+    .subscribe( () => this.loadChargingPoint(), (error: HttpErrorResponse) => {
+      alert(error.message)
+    }); 
   }
 
   public chargingPointForm(): void{
