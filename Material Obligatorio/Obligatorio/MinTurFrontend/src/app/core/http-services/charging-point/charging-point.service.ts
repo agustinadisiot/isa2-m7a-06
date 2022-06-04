@@ -24,6 +24,6 @@ export class ChargingPointService {
    }
 
   public deleteChargingPoint(chargingPointId: number): Observable<void>{
-    return this.http.delete<void>(format(ChargingPointEndpoints.DELETE_ONE_CHARGING_POINT,chargingPointId));
+    return this.http.delete<void>(ChargingPointEndpoints.DELETE_ONE_CHARGING_POINT+"/"+chargingPointId);
   }
 }
