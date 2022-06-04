@@ -91,6 +91,11 @@ export class CreateChargingPointComponent implements OnInit {
   }
 
   private validateName(): void {
+    const regex = new RegExp('@"^[a-zA-ZñÑáéíóúü0-9 ]+$"');
+    if (regex.test(this.name)){
+      this.displayError = true;
+      this.errorMessages.push('El formato del nombre no es correcto');
+    }
     if (!this.name?.trim()){
       this.displayError = true;
       this.errorMessages.push('Es necesario especificar un nombre');
@@ -98,6 +103,11 @@ export class CreateChargingPointComponent implements OnInit {
   }
 
   private validateDescription(): void {
+    const regex = new RegExp('@"^[a-zA-ZñÑáéíóúü0-9 ]+$"');
+    if (regex.test(this.description)){
+      this.displayError = true;
+      this.errorMessages.push('El formato de la descripción no es correcto');
+    }
     if (!this.description?.trim()){
       this.displayError = true;
       this.errorMessages.push('Es necesario especificar una descripción');
@@ -105,9 +115,14 @@ export class CreateChargingPointComponent implements OnInit {
   }
 
   private validateAddress(): void {
+    const regex = new RegExp('@"^[a-zA-ZñÑáéíóúü0-9 ]+$"');
+    if (regex.test(this.address)){
+      this.displayError = true;
+      this.errorMessages.push('El formato de la dirección no es correcto');
+    }
     if (!this.address?.trim()){
       this.displayError = true;
-      this.errorMessages.push('Es necesario especificar una región');
+      this.errorMessages.push('Es necesario especificar una dirección');
     }
   }
 
