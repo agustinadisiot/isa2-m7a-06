@@ -36,7 +36,7 @@ When(
   );
   
 
-When(/^I click on button Create Charging Point$/, function (callback) {
+When(/^I click on button Crear$/, function (callback) {
   element(by.id('createChargingPoint')).click();
   callback();
 });
@@ -45,12 +45,7 @@ When(/^I wait for (\d+) ms$/, function (timeToWait, callback) {
   setTimeout(callback, timeToWait);
 });
 
-Then(/^the page should Create Charging Point$/, function (callback) {
-  let chargingPoints = element(by.css('chargingPoints'))
-  expect(chargingPoints.count()).to.eventually.equal("").and.notify(callback);
-});
 
 Then(/^the page should show a message saying "([^"]*)"$/, function (text, callback) {
-  let chargingPoints = element(by.css('errorCreatingChargingPoint'))
   expect(element(by.css('[name="alert"]')).getText()).to.eventually.equal(text).and.notify(callback);
 });
