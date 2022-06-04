@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-charging-points',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: []
 })
 export class ExploreChargingPointsComponent implements OnInit {
+  constructor(private router: Router) {
+
+  }
   public explanationTitle: string;
   public explanationDescription: string;
   public chosenChargingPointId: number;
@@ -23,4 +27,7 @@ export class ExploreChargingPointsComponent implements OnInit {
     this.explanationDescription = 'Si conoce alguno más, por favor agrégelo. Si alguno esta desactualizado, por favor elimínelo.';
   }
 
+  public chargingPointForm(): void{
+    this.router.navigateByUrl("/explore/create-charging-point");
+  }
 }
