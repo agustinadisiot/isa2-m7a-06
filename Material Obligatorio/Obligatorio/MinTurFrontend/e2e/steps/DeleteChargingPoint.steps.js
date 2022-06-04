@@ -30,6 +30,11 @@ When(/^I wait for the list (\d+) ms$/, function (timeToWait, callback) {
 
 
 Then(/^the page should load a message saying "([^"]*)"$/, function (message) {
-  let errorLoading = element(by.id('deletedCorrectly'))
+  let deletedMessage = element(by.id('deletedCorrectly'))
+  expect(deletedMessage.getText()).to.eventually.equal(message);
+});
+
+Then(/^the page should load an error message saying "([^"]*)"$/, function () {
+  let errorLoading = element(by.id('deletedIncorrectly'))
   expect(errorLoading.getText()).to.eventually.equal(message);
 });
