@@ -83,7 +83,7 @@ jobs:
       - name: Copy file for docker
         run: ls
         working-directory:
-          'Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend'
+          './Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/'
           
       - name: Docker build    
         run:  docker build -t "ivanmonjardin/agil-front":"$GITHUB_SHA" \
