@@ -81,7 +81,9 @@ jobs:
       
       # Build the Docker image
       - name: Copy file for docker
-        run: cd  './Material Obligatorio/Obligatorio/MinTurFrontend/'
+        run: |
+              cd  './Material Obligatorio/Obligatorio/MinTurFrontend/'
+              ls
           
       - name: ls test
         run: ls
