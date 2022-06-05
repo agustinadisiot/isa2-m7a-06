@@ -36,7 +36,7 @@ jobs:
         
     
     - name: Test
-      run: dotnet test ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/Ministerio de Turismo.sln"  --collect:"Code Coverage" --results-directory "TestCoverageResults" --filter FullyQualifiedName!~SpecFlow -l:trx || true
+      run: dotnet test ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/Ministerio de Turismo.sln"  --collect:"Code Coverage" --results-directory "./Material Obligatorio/Obligatorio/Ministerio de Turismo/TestCoverageResults" --filter FullyQualifiedName!~SpecFlow -l:trx || true
       shell: bash
     - if: always()
       name: Report
@@ -59,8 +59,7 @@ jobs:
       run: dotnet tool install --global dotnet-coverage
     
     - name: Merge Projects Tests
-      run: ls 
-      #dotnet-coverage merge  -r . -f xml
+      run: dotnet-coverage merge  -r . -f xml
       working-directory: Material Obligatorio\Obligatorio\Ministerio de Turismo
       
     - name: Install reportgenerator
