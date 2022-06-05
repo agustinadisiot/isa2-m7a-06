@@ -84,9 +84,9 @@ jobs:
         run: cp './Material Obligatorio/Obligatorio/Docker-Front/Dockerfile' './Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/Dockerfile'
           
       - name: Docker build    
-          docker build -t "ivanmonjardin/agil-front":"$GITHUB_SHA" \
-            --build-arg GITHUB_SHA="${GITHUB_SHA}" \
-            --build-arg GITHUB_REF="${GITHUB_REF}" .
+        run:  docker build -t "ivanmonjardin/agil-front":"$GITHUB_SHA" \
+              --build-arg GITHUB_SHA="${GITHUB_SHA}" \
+              --build-arg GITHUB_REF="${GITHUB_REF}" .
       
       # Push the image to DockerHub
       - name: Push the image to DockerHub
