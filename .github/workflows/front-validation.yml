@@ -82,27 +82,27 @@ jobs:
 #       Build the Docker image
       - name: Copy file for docker
         run: |
-              cd  './Material Obligatorio/Obligatorio/MinTurFrontend/dist'
+              cd  './Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend'
               ls
           
 #       - name: test step
 #         run: cp 
         
-      - name: Docker build    
-        run:  docker build -t "ivanmonjardin/agil-front":"$GITHUB_SHA" \
-              --build-arg GITHUB_SHA="${GITHUB_SHA}" \
-              --build-arg GITHUB_REF="${GITHUB_REF}" .
+#       - name: Docker build    
+#         run:  docker build -t "ivanmonjardin/agil-front":"$GITHUB_SHA" \
+#               --build-arg GITHUB_SHA="${GITHUB_SHA}" \
+#               --build-arg GITHUB_REF="${GITHUB_REF}" .
       
-      # Push the image to DockerHub
-      - name: Push the image to DockerHub
-        run: |
-          docker push "ivanmonjardin/agil-front":"${GITHUB_SHA}"
-          docker tag "ivanmonjardin/agil-front":"${GITHUB_SHA}" "ivanmonjardin/agil-front" 
-          docker push "ivanmonjardin/agil-front"
+#       # Push the image to DockerHub
+#       - name: Push the image to DockerHub
+#         run: |
+#           docker push "ivanmonjardin/agil-front":"${GITHUB_SHA}"
+#           docker tag "ivanmonjardin/agil-front":"${GITHUB_SHA}" "ivanmonjardin/agil-front" 
+#           docker push "ivanmonjardin/agil-front"
           
-      # Deploy the Docker image to the IBM Cloud Kubernetes cluster
-      - name: Deploy to IKS
-        run: |
-          ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
-          kubectl config current-context
-          kubectl rollout restart deployment/front
+#       # Deploy the Docker image to the IBM Cloud Kubernetes cluster
+#       - name: Deploy to IKS
+#         run: |
+#           ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
+#           kubectl config current-context
+#           kubectl rollout restart deployment/front
