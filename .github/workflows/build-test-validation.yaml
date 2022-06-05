@@ -59,13 +59,12 @@ jobs:
       run: dotnet tool install --global dotnet-coverage
     
     - name: Merge Projects Tests
-      run: cd  ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/TestCoverageResults" |
-          dotnet-coverage merge  -r . -f xml
-    
+      run: dotnet-coverage merge  -r . -f xml
+      working-directory: Material Obligatorio/Obligatorio/Ministerio de Turismo/TestCoverageResults
+      
     - name: Install reportgenerator
       run: dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.1.9
       
     - name: Generate report
-      run: cd ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/TestCoverageResults" | 
-          reportgenerator "-reports:output.coverage.xml" "-targetdir:out"
-    
+      run: reportgenerator "-reports:output.coverage.xml" "-targetdir:out"
+      working-directory: Material Obligatorio/Obligatorio/Ministerio de Turismo/TestCoverageResults
