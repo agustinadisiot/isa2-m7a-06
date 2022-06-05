@@ -18,7 +18,7 @@ Given(/^I view the form "([^"]*)"$/, function (url, callback) {
 });
 
 When(
-  /^i type name "([^"]*)" in field "([^"]*)"$/,
+  /^i type name "([^"]*)" in the field "([^"]*)"$/,
   function (inputTextEntry, inputName) {   
     return browser.driver
       .findElement(by.css('[formControlName="' + inputName + '"]'))
@@ -28,7 +28,7 @@ When(
 
   
 When(
-  /^i type desc "([^"]*)" in field "([^"]*)"$/,
+  /^i type desc "([^"]*)" in the field "([^"]*)"$/,
   function (inputTextEntry, inputName) {   
     return browser.driver
       .findElement(by.css('[formControlName="' + inputName + '"]'))
@@ -37,28 +37,30 @@ When(
   );
   
 When(
-  /^i type address "([^"]*)" in field "([^"]*)"$/,
+  /^i type address "([^"]*)" in the field "([^"]*)"$/,
   function (inputTextEntry, inputName) {   
     return browser.driver
-      .findElement(by.css('[name="' + inputName + '"]'))
+      .findElement(by.css('[formControlName="' + inputName + '"]'))
       .sendKeys(inputTextEntry);
     }
   );
 
 When(
   /^i choose "([^"]*)" in the combo "([^"]*)"$/,
-  function (inputTextEntry, inputName) {   
-    return browser.driver
-      .findElement(by.css('[formControlName="' + inputName + '"]'))
-      .sendKeys(inputTextEntry);
+  function (entry, inputName) {   
+    browser.driver
+    .findElement(by.css('[name="' + inputName + '"]')).click();
+    return browser.driver.findElement(By.xpath("//*[text()= 'Región Metropolitana']")).click()
+      //.sendKeys(inputTextEntry);
     }
   );
   
 
 When(/^I click on button "([^"]*)"$/, function (buttonName) {
+  //browser.driver.sleep(1000);
   return browser.driver
-    .findElement(by.css('[name="' + buttonName + '"]'))
-    .click();
+  .findElement(by.css('[name="' + buttonName + '"]'))
+  .click();
 });
 
 When(/^I wait for (\d+) miliseconds$/, function (timeToWait, callback) {
@@ -66,7 +68,7 @@ When(/^I wait for (\d+) miliseconds$/, function (timeToWait, callback) {
 });
 
 Then(/^the page should show "([^"]*)"$/, function (text) {
-  browser.driver.sleep(1000);
+  //browser.driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
   browser.waitForAngular().then(function () {
     expect(
       element(by.css('[name="successMessage"]')).getText()
@@ -75,7 +77,7 @@ Then(/^the page should show "([^"]*)"$/, function (text) {
 });
 
 Then(/^the page should show a message saying "([^"]*)"$/, function (text) {
-  browser.driver.sleep(1000);
+  //browser.driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
   browser.waitForAngular().then(function () {
     expect(
       element(by.css('[name="alertMessage"]')).getText()
