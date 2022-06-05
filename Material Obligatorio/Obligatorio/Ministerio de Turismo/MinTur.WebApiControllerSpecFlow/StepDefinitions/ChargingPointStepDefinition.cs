@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MinTur.Models.In;
 using Newtonsoft.Json;
 using TechTalk.SpecFlow;
+using System.Threading.Tasks;
 
 namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
 {
