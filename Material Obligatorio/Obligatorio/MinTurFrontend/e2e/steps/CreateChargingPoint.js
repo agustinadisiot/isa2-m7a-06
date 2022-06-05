@@ -11,7 +11,7 @@ const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 
-Given(/^I view the "([^"]*)"$/, function (url, callback) {
+Given(/^I view the form "([^"]*)"$/, function (url, callback) {
   browser.get(url).then(function () {
     callback();
   });
@@ -61,7 +61,7 @@ When(/^I click on button "([^"]*)"$/, function (buttonName) {
     .click();
 });
 
-When(/^I wait for (\d+) ms$/, function (timeToWait, callback) {
+When(/^I wait for (\d+) miliseconds$/, function (timeToWait, callback) {
   setTimeout(callback, timeToWait);
 });
 

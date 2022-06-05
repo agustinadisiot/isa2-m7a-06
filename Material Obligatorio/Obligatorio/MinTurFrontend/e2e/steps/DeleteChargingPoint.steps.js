@@ -25,7 +25,7 @@ When(/^I click on list "([^"]*)"$/, function (listName) {
     .click();
 });
 
-When(/^I click on button "([^"]*)"$/, function (buttonName) {
+When(/^I click on the button "([^"]*)"$/, function (buttonName) {
   return browser.driver
     .findElement(by.css('[name="' + buttonName + '"]'))
     .click();
