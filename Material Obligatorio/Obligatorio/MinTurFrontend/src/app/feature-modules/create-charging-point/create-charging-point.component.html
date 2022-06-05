@@ -10,28 +10,28 @@
       <p class="text-indigo font-semibold self-center">Nombre:</p>
       <mat-form-field class="ml-3 self-start w-2/5" >
         <mat-label>ej: Ancap</mat-label>
-        <input matInput (input)="setName($event.target.value)">
+        <input formControlName="name" matInput (input)="setName($event.target.value)">
       </mat-form-field>
     </div>
     <div class="flex flex-row ml-2">
       <p class="text-indigo font-semibold self-center">Descripción:</p>
       <mat-form-field class="ml-3 self-start w-4/5" >
         <mat-label>ej:  Cuenta con carga de gas oil y 5 puestos de carga electricos</mat-label>
-        <input type="text" matInput (input)="setDescription($event.target.value)">
+        <input formControlName="description" type="text" matInput (input)="setDescription($event.target.value)">
       </mat-form-field>
     </div>
     <div class="flex flex-row ml-2">
       <p class="text-indigo font-semibold self-center">Dirección:</p>
       <mat-form-field class="ml-3 self-start w-4/5" >
         <mat-label>ej: Parada 12 punta del este Maldonado</mat-label>
-        <input type="text" matInput (input)="setAddress($event.target.value)">
+        <input formControlName="address" type="text" matInput (input)="setAddress($event.target.value)">
       </mat-form-field>
     </div>
     <div class="flex flex-row ml-2">
       <p class="text-indigo font-semibold self-center">Región:</p>
       <mat-form-field class="ml-3 self-start w-2/5" >
         <mat-label>ej: Región Metropolitana...</mat-label>
-        <mat-select (selectionChange)="selectRegion($event.value)" class="form-select mt-1 block w-full">
+        <mat-select (selectionChange)="selectRegion($event.value)" class="form-select mt-1 block w-full" name="region">
           <mat-option [value]="region.id" *ngFor="let region of regions">{{region.name}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -39,7 +39,7 @@
     <div class="mt-1 flex flex-col justify-around">
       <button (click)="createChargingPoint()"
         class="w-40 h-10 mt-2 self-center bg-indigo-700 hover:bg-white text-white font-semibold
-          hover:text-indigo p-2 border border-indigo rounded">
+          hover:text-indigo p-2 border border-indigo rounded" name="Crear">
         Crear
       </button>
     </div>
@@ -49,7 +49,7 @@
   <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
     <strong class="font-bold">Error: </strong>
     <div class="flex flex-col">
-      <span *ngFor="let error of errorMessages" class="block sm:inline ml-2">
+      <span *ngFor="let error of errorMessages" class="block sm:inline ml-2" name="alertMessage">
         {{error}}
       </span>
     </div>
@@ -64,6 +64,6 @@
       <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
       <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-400"></span>
     </span>
-    <p class="text-indigo font-bold text-center mb-6">¡Exito!</p>
+    <p name="successMessage" class="text-indigo font-bold text-center mb-6">¡Exito!</p>
   </div>
 </div>

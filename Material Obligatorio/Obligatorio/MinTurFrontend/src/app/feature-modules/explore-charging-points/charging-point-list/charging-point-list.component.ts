@@ -14,6 +14,7 @@ export class ChargingPointListComponent implements OnInit {
   public chargingPoints: ChargingPointBasicInfoModel[] = [];
   public chosenChargingPointId?: number;
   public errorLoadingChargingPoints = null;
+  public justDeletedChargingPoint = false;
   @Output() chosenChargingPointIdChange = new EventEmitter<number>();
   @Input() reloadChargingPoint = new EventEmitter();
   constructor(private activatedRoute: ActivatedRoute, private chargingPointService: ChargingPointService,
@@ -65,6 +66,7 @@ export class ChargingPointListComponent implements OnInit {
     this.chargingPoints.forEach(chargingPoint => {
       if (chargingPoint.id === this.chosenChargingPointId){
         chargingPointIsStillAvailable = true;
+        
       }
     });
 

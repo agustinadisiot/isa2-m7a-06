@@ -10,14 +10,14 @@
 
     <button (click)="deleteChargingPoint()"
     class="w-40 h-10 mt-2 ml-4 bg-indigo-700 hover:bg-white text-white font-semibold
-      hover:text-indigo p-2 border border-indigo rounded">
-    Eliminar
-  </button>
+      hover:text-indigo p-2 border border-indigo rounded" name="Eliminar">
+      Eliminar
+    </button>
 
   </div>
 
   <div class="w-full sm:w-4/5 flex flex-col">
-  
+
   <!-- chargin point list -->
   <!-- flex flex-col -->
 <div class="">
@@ -32,7 +32,7 @@
          class="border-4 rounded-3xl m-3 p-3 flex flex-col lg:flex-row cursor-pointer"
          [class]="{'border-pink': isChargingPointCardChosen(chargingPoint.id),
               'hover:border-purple': !isChargingPointCardChosen(chargingPoint.id)}" >
-      <div class="flex flex-col">
+      <div class="flex flex-col" name="choosenPoint">
         <p id="loadCorrectly" class="font-semibold text-indigo text-xl">{{chargingPoint.name}}</p>
         <p class="text-justify">{{chargingPoint.description}}</p>
         <div class="flex flex-row" >

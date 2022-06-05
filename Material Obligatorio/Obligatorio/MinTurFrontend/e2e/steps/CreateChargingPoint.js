@@ -18,10 +18,29 @@ Given(/^I view the "([^"]*)"$/, function (url, callback) {
 });
 
 When(
-  /^i type "([^"]*)" in field "([^"]*)"$/,
+  /^i type name "([^"]*)" in field "([^"]*)"$/,
   function (inputTextEntry, inputName) {   
     return browser.driver
       .findElement(by.css('[formControlName="' + inputName + '"]'))
+      .sendKeys(inputTextEntry);
+    }
+  );
+
+  
+When(
+  /^i type desc "([^"]*)" in field "([^"]*)"$/,
+  function (inputTextEntry, inputName) {   
+    return browser.driver
+      .findElement(by.css('[formControlName="' + inputName + '"]'))
+      .sendKeys(inputTextEntry);
+    }
+  );
+  
+When(
+  /^i type address "([^"]*)" in field "([^"]*)"$/,
+  function (inputTextEntry, inputName) {   
+    return browser.driver
+      .findElement(by.css('[name="' + inputName + '"]'))
       .sendKeys(inputTextEntry);
     }
   );
@@ -36,21 +55,30 @@ When(
   );
   
 
-When(/^I click on button Create Charging Point$/, function (callback) {
-  element(by.id('createChargingPoint')).click();
-  callback();
+When(/^I click on button "([^"]*)"$/, function (buttonName) {
+  return browser.driver
+    .findElement(by.css('[name="' + buttonName + '"]'))
+    .click();
 });
 
 When(/^I wait for (\d+) ms$/, function (timeToWait, callback) {
   setTimeout(callback, timeToWait);
 });
 
-Then(/^the page should Create Charging Point$/, function (callback) {
-  let chargingPoints = element(by.css('chargingPoints'))
-  expect(chargingPoints.count()).to.eventually.equal("").and.notify(callback);
+Then(/^the page should show "([^"]*)"$/, function (text) {
+  browser.driver.sleep(1000);
+  browser.waitForAngular().then(function () {
+    expect(
+      element(by.css('[name="successMessage"]')).getText()
+    ).to.eventually.equal(text);
+  });
 });
 
-Then(/^the page should show a message saying "([^"]*)"$/, function (text, callback) {
-  let chargingPoints = element(by.css('errorCreatingChargingPoint'))
-  expect(element(by.css('[name="alert"]')).getText()).to.eventually.equal(text).and.notify(callback);
+Then(/^the page should show a message saying "([^"]*)"$/, function (text) {
+  browser.driver.sleep(1000);
+  browser.waitForAngular().then(function () {
+    expect(
+      element(by.css('[name="alertMessage"]')).getText()
+    ).to.eventually.equal(text);
+  });
 });
