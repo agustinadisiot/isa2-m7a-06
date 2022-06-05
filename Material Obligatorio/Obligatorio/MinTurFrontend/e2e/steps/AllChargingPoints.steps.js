@@ -29,7 +29,8 @@ When(/^I wait for (\d+) ms$/, function (timeToWait, callback) {
 });
 
 
-Then(/^the page should show a message saying "([^"]*)"$/, function (message, callback) {
+
+Then(/^the page should show the message "([^"]*)"$/, function (message) {
     let errorLoading = element(by.id('loadIncorrectly'))
     expect(errorLoading.getText()).to.eventually.equal(message).and.notify(callback);
 

@@ -8,7 +8,7 @@ exports.config = {
   ],
 
   capabilities: {
-    browserName: 'firefox' // You can use any browser you want.
+    browserName: 'chrome' // You can use any browser you want.
   },
 
   framework: 'custom', //We need this line to use the cucumber framework

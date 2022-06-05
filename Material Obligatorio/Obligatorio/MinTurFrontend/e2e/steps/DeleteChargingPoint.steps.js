@@ -19,9 +19,16 @@ Given(/^I view the list on "([^"]*)"$/, function (url, callback) {
   });
 });
 
-When(/^I click on button Delete Charging Points$/, function (callback) {
-  element(by.id('deleteChargingPoint')).click();
-  callback();
+When(/^I click on list "([^"]*)"$/, function (listName) {
+  return browser.driver
+    .findElement(by.css('[name="' + listName + '"]'))
+    .click();
+});
+
+When(/^I click on the button "([^"]*)"$/, function (buttonName) {
+  return browser.driver
+    .findElement(by.css('[name="' + buttonName + '"]'))
+    .click();
 });
 
 When(/^I wait for the list (\d+) ms$/, function (timeToWait, callback) {
@@ -29,12 +36,7 @@ When(/^I wait for the list (\d+) ms$/, function (timeToWait, callback) {
 });
 
 
-Then(/^the page should load a message saying "([^"]*)"$/, function (message) {
-  let deletedMessage = element(by.id('deletedCorrectly'))
-  expect(deletedMessage.getText()).to.eventually.equal(message);
-});
-
-Then(/^the page should load an error message saying "([^"]*)"$/, function () {
-  let errorLoading = element(by.id('deletedIncorrectly'))
-  expect(errorLoading.getText()).to.eventually.equal(message);
+Then(/^the page should load a message saying "([^"]*)"$/, function (text, callback) {
+  let loadedCorrectly = element(by.id('deleteCP'))
+  expect(loadedCorrectly.getText()).to.eventually.equal(text).and.notify(callback);
 });
