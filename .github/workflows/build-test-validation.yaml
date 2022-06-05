@@ -28,11 +28,11 @@ jobs:
       run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo" 
 
 
-    - name: Upload a Build Artifcat 
-      uses: actions/upload-artifact@v2.2.2
-      with: 
-        name: BuildRelease
-        path: './Material Obligatorio/Obligatorio/Ministerio de Turismo/MinTur.WebApi/bin/Release/netcoreapp3.1/*'
+#     - name: Upload a Build Artifcat 
+#       uses: actions/upload-artifact@v2.2.2
+#       with: 
+#         name: BuildRelease
+#         path: './Material Obligatorio/Obligatorio/Ministerio de Turismo/MinTur.WebApi/bin/Release/netcoreapp3.1/*'
         
     
     - name: Test
@@ -47,11 +47,11 @@ jobs:
         reporter: dotnet-trx
         fail-on-error: 'false'
 
-    - name: Upload test results
-      uses: actions/upload-artifact@v2.2.2
-      with:
-        name: GitHubActionsTestsResults
-        path: '**/*.trx'
+#     - name: Upload test results
+#       uses: actions/upload-artifact@v2.2.2
+#       with:
+#         name: GitHubActionsTestsResults
+#         path: '**/*.trx'
         
     # Code coverage
     
@@ -60,11 +60,11 @@ jobs:
     
     - name: Merge Projects Tests
       run: dotnet-coverage merge  -r . -f xml
-      working-directory: Material Obligatorio/Obligatorio/Ministerio de Turismo/TestCoverageResults
+      working-directory: Material Obligatorio\Obligatorio\Ministerio de Turismo\TestCoverageResults
       
     - name: Install reportgenerator
       run: dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.1.9
       
     - name: Generate report
       run: reportgenerator "-reports:output.coverage.xml" "-targetdir:out"
-      working-directory: Material Obligatorio/Obligatorio/Ministerio de Turismo/TestCoverageResults
+      working-directory: Material Obligatorio\Obligatorio\Ministerio de Turismo\TestCoverageResults
