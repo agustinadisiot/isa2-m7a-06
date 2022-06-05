@@ -59,7 +59,8 @@ jobs:
       run: dotnet tool install --global dotnet-coverage
     
     - name: Merge Projects Tests
-      run: dotnet-coverage merge  -r ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/TestCoverageResults" -f xml
+      run: cd  ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/TestCoverageResults" |
+          dotnet-coverage merge  -r . -f xml
     
     - name: Install reportgenerator
       run: dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.1.9
