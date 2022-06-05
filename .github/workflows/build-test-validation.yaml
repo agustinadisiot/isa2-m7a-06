@@ -14,26 +14,24 @@ jobs:
     steps:
     
 #    - uses: actions/checkout@v3
-#     - name: Setup .NET
-#       uses: actions/setup-dotnet@v2
-#       with:
-#         dotnet-version: 3.
-    - name: 'Checkout'
-      uses: actions/checkout@v2
-      
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
       with:
-        dotnet-version:  | 
-                        3.1
-                        5.0
+        dotnet-version: 3.1.x
+      
+#     - name: Setup .NET Core
+#       uses: actions/setup-dotnet@v1
+#       with:
+#         dotnet-version:  | 
+#                         3.1
+#                         5.0
   
   
     - name: Restore dependencies
-      run: dotnet restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
+      run: dotnet restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"
     
     - name: Build
-      run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln" 
+      run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo" 
 
 
     - name: Upload a Build Artifcat 
