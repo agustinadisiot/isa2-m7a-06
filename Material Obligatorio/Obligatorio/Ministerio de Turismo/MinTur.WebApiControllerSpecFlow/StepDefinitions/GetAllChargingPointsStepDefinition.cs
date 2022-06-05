@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MinTur.Models.Out;
 using TechTalk.SpecFlow;
 using System.Threading.Tasks;
-
+using System.Collections.Generic;
 
 namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
 {

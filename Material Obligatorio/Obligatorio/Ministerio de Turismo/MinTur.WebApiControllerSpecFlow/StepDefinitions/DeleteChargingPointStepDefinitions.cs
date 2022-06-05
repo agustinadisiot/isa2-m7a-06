@@ -5,7 +5,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 using System.Threading.Tasks;
 
-
 namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
 {
     [Binding]
