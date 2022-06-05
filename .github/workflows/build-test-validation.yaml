@@ -31,7 +31,7 @@ jobs:
       run: dotnet restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln"
     
     - name: Build
-      run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln" 
+      run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"/"Ministerio de Turismo.sln" --filter FullyQualifiedName!~SpecFlow
 
 
     - name: Upload a Build Artifcat 
