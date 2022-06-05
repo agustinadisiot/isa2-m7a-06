@@ -28,7 +28,8 @@ jobs:
   
   
     - name: Restore dependencies
-      run: dotnet restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"
+      run: dotnet restore 
+      working-directory: ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"
     
     - name: Build
       run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo" 
