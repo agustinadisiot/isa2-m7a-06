@@ -36,7 +36,7 @@ When(/^I wait for the list (\d+) ms$/, function (timeToWait, callback) {
 });
 
 
-Then(/^the page should load a new list of Charging Points$/, function (callback) {
-  let loadedCorrectly = element(by.id('loadCorrectly'))
-  expect(loadedCorrectly.getText()).to.eventually.equal("Ancap Maldonado3").and.notify(callback);
+Then(/^the page should load a message saying "([^"]*)"$/, function (text, callback) {
+  let loadedCorrectly = element(by.id('deleteCP'))
+  expect(loadedCorrectly.getText()).to.eventually.equal(text).and.notify(callback);
 });

@@ -22,6 +22,7 @@ export class CreateChargingPointComponent implements OnInit {
   public errorMessages: string[] = [];
   public regions: RegionBasicInfoModel[] = [];
   private chargingPointIntentModel: ChargingPointIntentModel;
+  public messageCreate: string = "Complete el formulario para crear un punto de carga";
 
   constructor(private chargingPointService: ChargingPointService,
               private regionService: RegionService) { }
@@ -51,7 +52,7 @@ export class CreateChargingPointComponent implements OnInit {
     this.description = description;
   }
 
-  
+
   public setAddress(address: string): void{
     this.address = address;
   }
@@ -72,9 +73,14 @@ export class CreateChargingPointComponent implements OnInit {
       };
       this.chargingPointService.createChargingsPoint(this.chargingPointIntentModel).subscribe(
         chargingPointBasicInfoModel => {
+          this.messageCreate = "Creado Correctamente"
           this.justCreatedChargingPoint = true;
+
         },
-        error => this.showError(error)
+        error =>{
+          this.messageCreate = "Error al intentar crear un punto de carga"
+          this.showError(error)
+        }
       );
     }else{
       this.justCreatedChargingPoint = false;
@@ -92,45 +98,60 @@ export class CreateChargingPointComponent implements OnInit {
 
   private validateName(): void {
     const regex = new RegExp('@"^[a-zA-ZñÑáéíóúü0-9 ]+$"');
+    let errMsg = 'El formato del nombre no es correcto'
     if (regex.test(this.name)){
       this.displayError = true;
-      this.errorMessages.push('El formato del nombre no es correcto');
+      this.errorMessages.push(errMsg);
+      this.messageCreate = errMsg;
     }
     if (!this.name?.trim()){
       this.displayError = true;
-      this.errorMessages.push('Es necesario especificar un nombre');
+      errMsg = 'Es necesario especificar un nombre'
+      this.errorMessages.push(errMsg);
+      this.messageCreate = errMsg;
     }
   }
 
   private validateDescription(): void {
     const regex = new RegExp('@"^[a-zA-ZñÑáéíóúü0-9 ]+$"');
+    let errMsg = 'El formato de la descripción no es correcto';
     if (regex.test(this.description)){
       this.displayError = true;
-      this.errorMessages.push('El formato de la descripción no es correcto');
+      this.errorMessages.push(errMsg);
+      this.messageCreate = errMsg;
     }
     if (!this.description?.trim()){
       this.displayError = true;
-      this.errorMessages.push('Es necesario especificar una descripción');
+      errMsg = 'Es necesario especificar una descripción'
+      this.errorMessages.push(errMsg);
+      this.messageCreate = errMsg;
     }
   }
 
   private validateAddress(): void {
     const regex = new RegExp('@"^[a-zA-ZñÑáéíóúü0-9 ]+$"');
+    let errMsg = 'El formato de la dirección no es correcto';
     if (regex.test(this.address)){
       this.displayError = true;
-      this.errorMessages.push('El formato de la dirección no es correcto');
+      this.errorMessages.push(errMsg);
+      this.messageCreate = errMsg;
     }
     if (!this.address?.trim()){
       this.displayError = true;
-      this.errorMessages.push('Es necesario especificar una dirección');
+      errMsg = 'Es necesario especificar una dirección'
+      this.errorMessages.push(errMsg);
+      this.messageCreate = errMsg;
     }
   }
 
   private validateRegion(): void {
+    let errMsg = 'Es necesario especificar una región'
     if (!this.regionId){
       this.displayError = true;
-      this.errorMessages.push('Es necesario especificar una región');
+      this.errorMessages.push(errMsg);
+      this.messageCreate = errMsg;
     }
+
   }
 
   private showError(error: HttpErrorResponse): void{

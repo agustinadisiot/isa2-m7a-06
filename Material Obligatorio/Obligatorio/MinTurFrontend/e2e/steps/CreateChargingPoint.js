@@ -19,26 +19,26 @@ Given(/^I view the form "([^"]*)"$/, function (url, callback) {
 
 When(
   /^i type name "([^"]*)" in the field "([^"]*)"$/,
-  function (inputTextEntry, inputName) {   
+  function (inputTextEntry, inputName) {
     return browser.driver
       .findElement(by.css('[formControlName="' + inputName + '"]'))
       .sendKeys(inputTextEntry);
     }
   );
 
-  
+
 When(
   /^i type desc "([^"]*)" in the field "([^"]*)"$/,
-  function (inputTextEntry, inputName) {   
+  function (inputTextEntry, inputName) {
     return browser.driver
       .findElement(by.css('[formControlName="' + inputName + '"]'))
       .sendKeys(inputTextEntry);
     }
   );
-  
+
 When(
   /^i type address "([^"]*)" in the field "([^"]*)"$/,
-  function (inputTextEntry, inputName) {   
+  function (inputTextEntry, inputName) {
     return browser.driver
       .findElement(by.css('[formControlName="' + inputName + '"]'))
       .sendKeys(inputTextEntry);
@@ -47,17 +47,17 @@ When(
 
 When(
   /^i choose "([^"]*)" in the combo "([^"]*)"$/,
-  function (entry, inputName) {   
+  function (entry, inputName) {
     browser.driver
     .findElement(by.css('[name="' + inputName + '"]')).click();
-    return browser.driver.findElement(By.xpath("//*[text()= 'Región Metropolitana']")).click()
+    let path = "//*[text()='"+entry +"']"
+    return browser.driver.findElement(By.xpath(path)).click()
       //.sendKeys(inputTextEntry);
     }
   );
-  
+
 
 When(/^I click on button "([^"]*)"$/, function (buttonName) {
-  //browser.driver.sleep(1000);
   return browser.driver
   .findElement(by.css('[name="' + buttonName + '"]'))
   .click();
@@ -67,20 +67,12 @@ When(/^I wait for (\d+) miliseconds$/, function (timeToWait, callback) {
   setTimeout(callback, timeToWait);
 });
 
-Then(/^the page should show "([^"]*)"$/, function (text) {
-  //browser.driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-  browser.waitForAngular().then(function () {
-    expect(
-      element(by.css('[name="successMessage"]')).getText()
-    ).to.eventually.equal(text);
-  });
+Then(/^the page should show "([^"]*)"$/, function (text, callback) {
+  let created = element(by.id('messageCreateChargingPoint'))
+  expect(created.getText()).to.eventually.equal(text).and.notify(callback);
 });
 
-Then(/^the page should show a message saying "([^"]*)"$/, function (text) {
-  //browser.driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-  browser.waitForAngular().then(function () {
-    expect(
-      element(by.css('[name="alertMessage"]')).getText()
-    ).to.eventually.equal(text);
-  });
+Then(/^the page should show a message saying "([^"]*)"$/, function (text, callback) {
+  let error = element(by.id('messageCreateChargingPoint'))
+  expect(error.getText()).to.eventually.equal(text).and.notify(callback);
 });

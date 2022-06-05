@@ -15,6 +15,7 @@ export class ChargingPointListComponent implements OnInit {
   public chosenChargingPointId?: number;
   public errorLoadingChargingPoints = null;
   public justDeletedChargingPoint = false;
+  public messageDeleted: string = "Seleccione un punto de carga y luego aprete el boton para eliminar"
   @Output() chosenChargingPointIdChange = new EventEmitter<number>();
   @Input() reloadChargingPoint = new EventEmitter();
   constructor(private activatedRoute: ActivatedRoute, private chargingPointService: ChargingPointService,
@@ -26,15 +27,19 @@ export class ChargingPointListComponent implements OnInit {
   }
 
   public retrieveComponentData(): void{
+    this.errorLoadingChargingPoints = "No hay puntos de carga por el momento.";
     this.loadChargingPoint();
   }
 
   public loadChargingPoint(): void{
     this.chargingPointService.allChargingPoints()
-    .subscribe(chargingPoints => this.chargingPoints = chargingPoints, (error: HttpErrorResponse) => {
+    .subscribe(chargingPoints =>{
+      this.chargingPoints = chargingPoints;
+      this.errorLoadingChargingPoints = "La lista de puntos de cargas es la siguiente: "
+    } , (error: HttpErrorResponse) => {
       this.showError(error)
       this.errorLoadingChargingPoints = "No hay puntos de carga por el momento."
-    }); 
+    });
 
   }
   public chooseChargingPoint(chargingPointId?: number): void{
@@ -66,7 +71,7 @@ export class ChargingPointListComponent implements OnInit {
     this.chargingPoints.forEach(chargingPoint => {
       if (chargingPoint.id === this.chosenChargingPointId){
         chargingPointIsStillAvailable = true;
-        
+
       }
     });
 
@@ -74,7 +79,7 @@ export class ChargingPointListComponent implements OnInit {
       this.chooseChargingPoint(null);
     }
   }
-  
+
   private showError(error: HttpErrorResponse): void{
     console.log(error);
   }
@@ -82,9 +87,13 @@ export class ChargingPointListComponent implements OnInit {
   public deleteChargingPoint()
   {
     this.chargingPointService.deleteChargingPoint(this.chosenChargingPointId)
-    .subscribe( () => this.loadChargingPoint(), (error: HttpErrorResponse) => {
-      alert(error.message)
-    }); 
+    .subscribe( () => {
+      this.messageDeleted = "Borrado Correctamente"
+      this.loadChargingPoint()
+    }, (error: HttpErrorResponse) => {
+      alert(error.message);
+      this.messageDeleted = "Error al borrar"
+    });
   }
 
   public chargingPointForm(): void{

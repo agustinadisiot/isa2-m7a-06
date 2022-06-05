@@ -43,8 +43,12 @@
         Crear
       </button>
     </div>
+    <div class="mt-1 flex flex-col justify-around">
+      <p id="messageCreateChargingPoint">{{messageCreate}}</p>
+    </div>
   </div>
 </div>
+
 <div *ngIf="displayError" class="ml-10 mr-10 mt-6">
   <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
     <strong class="font-bold">Error: </strong>

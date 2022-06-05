@@ -5,4 +5,5 @@ Feature: Test Delete Charging Point
     When I click on list "choosenPoint"
     When I click on the button "Eliminar"
     When I wait for the list 3000 ms
-    Then the page should load a new list of Charging Points
+    Then the page should load a message saying "Borrado Correctamente"
+
