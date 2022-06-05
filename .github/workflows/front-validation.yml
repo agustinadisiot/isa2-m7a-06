@@ -76,12 +76,12 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v2
         with:
           find: 'http://localhost:5000/api'
-          replace: "${BACKEND_ENDPOINT}"
+          replace: '${BACKEND_ENDPOINT}'
           include: "./Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/**"
       
       # Build the Docker image
       - name: Copy file for docker
-        run: cp './Material Obligatorio/Obligatorio/Docker-Front/Dockerfile' './Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/Dockerfile'
+        run: cp './Material Obligatorio/Obligatorio/Docker-Front/Dockerfile' './Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend'
           
       - name: Docker build    
         run:  docker build -t "ivanmonjardin/agil-front":"$GITHUB_SHA" \
