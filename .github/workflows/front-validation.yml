@@ -79,14 +79,14 @@ jobs:
 #           replace: '${BACKEND_ENDPOINT}'
 #           include: "./Material Obligatorio/Obligatorio/MinTurFrontend/dist/MinTurFrontend/**"
       
-      # Build the Docker image
+#       Build the Docker image
       - name: Copy file for docker
         run: |
-              cd  './Material Obligatorio/Obligatorio/MinTurFrontend/'
+              cd  './Material Obligatorio/Obligatorio/MinTurFrontend/dist'
               ls
           
-      - name: ls test
-        run: ls
+#       - name: test step
+#         run: cp 
         
       - name: Docker build    
         run:  docker build -t "ivanmonjardin/agil-front":"$GITHUB_SHA" \
