@@ -3,6 +3,10 @@ using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MinTur.Models.Out;
 using TechTalk.SpecFlow;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Net.Http;
+
 
 namespace MinTur.WebApiControllerSpecFlow.StepDefinitions
 {
