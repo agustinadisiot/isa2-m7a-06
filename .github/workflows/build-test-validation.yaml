@@ -2,9 +2,9 @@ name: build-test-dotnet
 
 on:
   push:
-    branches: [ main, staging, bugfix-SpecFlowAction ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, staging ]
+    branches: [ main  ]
 
 jobs:
   build:
@@ -20,23 +20,12 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 3.1.x
-      
-#     - name: Setup .NET Core
-#       uses: actions/setup-dotnet@v1
-#       with:
-#         dotnet-version:  | 
-#                         3.1
-#                         5.0
-  
   
     - name: Restore dependencies
-      run: dotnet restore 
-      working-directory: Material Obligatorio\Obligatorio\Ministerio de Turismo
-      
+      run: dotnet restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo"
       
     - name: Build
       run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo" 
-
 
     - name: Upload a Build Artifcat 
       uses: actions/upload-artifact@v2.2.2
@@ -46,7 +35,7 @@ jobs:
         
     
     - name: Test
-      run: dotnet test ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/Ministerio de Turismo.sln"  --filter FullyQualifiedName!~SpecFlow -l:trx || true
+      run: dotnet test ./"Material Obligatorio/Obligatorio/Ministerio de Turismo/Ministerio de Turismo.sln"  --collect:"Code Coverage" --results-directory "./Material Obligatorio/Obligatorio/Ministerio de Turismo/TestCoverageResults" --filter FullyQualifiedName!~SpecFlow -l:trx || true
       shell: bash
     - if: always()
       name: Report
@@ -60,5 +49,27 @@ jobs:
     - name: Upload test results
       uses: actions/upload-artifact@v2.2.2
       with:
-        name: GitHubActionsTestsResults
+        name: TestResults
         path: '**/*.trx'
+        
+    # Code coverage
+    
+    - name: Install dotenet-coverage
+      run: dotnet tool install --global dotnet-coverage
+    
+    - name: Merge Projects Tests
+      run: dotnet-coverage merge  -r . -f xml
+      working-directory: Material Obligatorio\Obligatorio\Ministerio de Turismo\TestCoverageResults
+      
+    - name: Install reportgenerator
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool --version 5.1.9
+      
+    - name: Generate report
+      run: reportgenerator "-reports:output.coverage.xml" "-targetdir:out"
+      working-directory: Material Obligatorio\Obligatorio\Ministerio de Turismo\TestCoverageResults
+      
+    - name: Upload report
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: CodeCoverageResult
+        path: "./Material Obligatorio/Obligatorio/Ministerio de Turismo/TestCoverageResults/out/*"
