@@ -33,3 +33,6 @@ Entrega 3
 
 - [Test Selenium](./Material%20Obligatorio/Obligatorio/TestSelenium)
 - [Informe](Informe-entrega-3.pdf)
+- [Guía Desarrollo/mantenimiento del nuevo tablero usando BDD](guia-tablero-bdd-entrega-3.pdf)
+- [Guía Configuración/mantenimiento del pipeline y su vínculo con el tablero](configuracion-pipeline-tablero-entrega-3.pdf)
+- [Tablero: Pestaña de Projects](https://github.com/agustinadisiot/isa2-m7a-06/projects/1) 
