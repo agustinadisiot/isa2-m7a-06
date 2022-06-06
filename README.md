@@ -32,3 +32,4 @@ Entrega 2
 Entrega 3
 
 - [Test Selenium](./Material%20Obligatorio/Obligatorio/TestSelenium)
+- [Informe](Informe-entrega-3.pdf)
