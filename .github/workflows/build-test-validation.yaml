@@ -47,11 +47,11 @@ jobs:
         reporter: dotnet-trx
         fail-on-error: 'false'
 
-#     - name: Upload test results
-#       uses: actions/upload-artifact@v2.2.2
-#       with:
-#         name: GitHubActionsTestsResults
-#         path: '**/*.trx'
+    - name: Upload test results
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: TestResults
+        path: '**/*.trx'
         
     # Code coverage
     
@@ -68,3 +68,9 @@ jobs:
     - name: Generate report
       run: reportgenerator "-reports:output.coverage.xml" "-targetdir:out"
       working-directory: Material Obligatorio\Obligatorio\Ministerio de Turismo\TestCoverageResults
+      
+    - name: Upload report
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: CodeCoverageResult
+        path: "./Material Obligatorio/Obligatorio/Ministerio de Turismo/TestCoverageResults/out/*"
