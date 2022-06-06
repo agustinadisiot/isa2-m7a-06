@@ -2,7 +2,7 @@ name: build-test-dotnet
 
 on:
   push:
-    branches: [ main, feature-CodeCoverageAction ]
+    branches: [ main ]
   pull_request:
     branches: [ main  ]
 
@@ -27,12 +27,11 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore ./"Material Obligatorio"/"Obligatorio"/"Ministerio de Turismo" 
 
-
-#     - name: Upload a Build Artifcat 
-#       uses: actions/upload-artifact@v2.2.2
-#       with: 
-#         name: BuildRelease
-#         path: './Material Obligatorio/Obligatorio/Ministerio de Turismo/MinTur.WebApi/bin/Release/netcoreapp3.1/*'
+    - name: Upload a Build Artifcat 
+      uses: actions/upload-artifact@v2.2.2
+      with: 
+        name: BuildRelease
+        path: './Material Obligatorio/Obligatorio/Ministerio de Turismo/MinTur.WebApi/bin/Release/netcoreapp3.1/*'
         
     
     - name: Test
