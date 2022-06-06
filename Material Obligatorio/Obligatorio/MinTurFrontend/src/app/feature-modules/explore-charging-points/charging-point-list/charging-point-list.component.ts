@@ -32,6 +32,7 @@ export class ChargingPointListComponent implements OnInit {
   }
 
   public loadChargingPoint(): void{
+
     this.chargingPointService.allChargingPoints()
     .subscribe(chargingPoints =>{
       this.chargingPoints = chargingPoints;
@@ -41,7 +42,6 @@ export class ChargingPointListComponent implements OnInit {
       if (this.chargingPoints.length == 0){
         this.errorLoadingChargingPoints = "No hay puntos de carga por el momento.";
       }
-
 
     } , (error: HttpErrorResponse) => {
       this.showError(error)
