@@ -25,3 +25,10 @@ Entrega 2
 - [Guía Desarrollo/mantenimiento del nuevo tablero usando BDD](guia-tablero-bdd.pdf)
 - [Guía Configuración/mantenimiento del pipeline y su vínculo con el tablero](configuracion-pipeline-tablero.pdf)
 - [Tablero: Pestaña de Projects](https://github.com/agustinadisiot/isa2-m7a-06/projects/1) 
+
+
+---
+
+Entrega 3
+
+- [Test Selenium](./Material%20Obligatorio/Obligatorio/TestSelenium)
