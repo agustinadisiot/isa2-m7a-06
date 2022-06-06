@@ -13,7 +13,7 @@ import { ChargingPointBasicInfoModel } from 'src/app/shared/models/out/charging-
 export class ChargingPointListComponent implements OnInit {
   public chargingPoints: ChargingPointBasicInfoModel[] = [];
   public chosenChargingPointId?: number;
-  public errorLoadingChargingPoints = null;
+  public errorLoadingChargingPoints = "No hay puntos de carga por el momento.";
   public justDeletedChargingPoint = false;
   public messageDeleted: string = "Seleccione un punto de carga y luego aprete el boton para eliminar"
   @Output() chosenChargingPointIdChange = new EventEmitter<number>();
@@ -34,8 +34,11 @@ export class ChargingPointListComponent implements OnInit {
   public loadChargingPoint(): void{
     this.chargingPointService.allChargingPoints()
     .subscribe(chargingPoints =>{
+      if (this.chargingPoints.length > 0){
+        this.errorLoadingChargingPoints = "La lista de puntos de cargas es la siguiente: ";
+      }
       this.chargingPoints = chargingPoints;
-      this.errorLoadingChargingPoints = "La lista de puntos de cargas es la siguiente: "
+
     } , (error: HttpErrorResponse) => {
       this.showError(error)
       this.errorLoadingChargingPoints = "No hay puntos de carga por el momento."

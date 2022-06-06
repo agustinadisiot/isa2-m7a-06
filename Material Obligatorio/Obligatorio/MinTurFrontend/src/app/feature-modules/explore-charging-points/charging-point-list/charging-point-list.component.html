@@ -35,7 +35,7 @@
       {{errorLoadingChargingPoints}}
     </p>
   </div>
-  <div *ngIf="!errorLoadingChargingPoints && chargingPoints.length != 0" >
+  <div *ngIf="chargingPoints.length != 0" >
     <div *ngFor="let chargingPoint of chargingPoints" (click)="chooseChargingPoint(chargingPoint.id)"
          class="border-4 rounded-3xl m-3 p-3 flex flex-col lg:flex-row cursor-pointer"
          [class]="{'border-pink': isChargingPointCardChosen(chargingPoint.id),

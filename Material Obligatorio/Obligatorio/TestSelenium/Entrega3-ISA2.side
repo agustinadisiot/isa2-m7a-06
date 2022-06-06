@@ -1,0 +1,286 @@
+{
+  "id": "b35d529c-2b60-445c-9898-b79bd3cfa91a",
+  "version": "2.0",
+  "name": "Entrega3-ISA2",
+  "url": "http://localhost:4200",
+  "tests": [{
+    "id": "98ae09f9-2344-4b71-8170-26349d6e5a20",
+    "name": "Empty List of charging points",
+    "commands": [{
+      "id": "66c6c22d-fbe5-4419-8e81-4aed6d0b68bb",
+      "comment": "",
+      "command": "open",
+      "target": "/explore/regions",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "83c3502c-f4ff-4010-9f48-050c667a0133",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1520x970",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "98c2c495-c981-4ae5-aa75-fb31f5b57ff8",
+      "comment": "",
+      "command": "click",
+      "target": "id=getChargingPoints",
+      "targets": [
+        ["id=getChargingPoints", "id"],
+        ["linkText=Puntos de Carga", "linkText"],
+        ["css=#getChargingPoints", "css:finder"],
+        ["xpath=//a[@id='getChargingPoints']", "xpath:attributes"],
+        ["xpath=//div[@id='sidebar']/ul/div/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/explore/charging-points')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Puntos de Carga')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a3591fcf-0012-4cb9-9773-e69b104dc3c3",
+    "name": "Create charging point",
+    "commands": [{
+      "id": "9b03b284-5b36-43d9-b1d3-2cfde0ac4e54",
+      "comment": "",
+      "command": "open",
+      "target": "/explore/regions",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1db69046-1512-4ed3-9de1-1e2eb15ed2ee",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1050x954",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d8f62e74-04a9-442a-abbf-0954970c4e7a",
+      "comment": "",
+      "command": "click",
+      "target": "css=#getChargingPoints > .w-full",
+      "targets": [
+        ["css=#getChargingPoints > .w-full", "css:finder"],
+        ["xpath=//a[@id='getChargingPoints']/span", "xpath:idRelative"],
+        ["xpath=//li[2]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Puntos de Carga')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8415b37a-9705-414a-ab7e-7971a53e323b",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > .w-40",
+      "targets": [
+        ["css=div:nth-child(1) > .w-40", "css:finder"],
+        ["xpath=//div[@id='main-content']/div/app-charging-points/app-charging-point-list/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Crear Nuevo')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "932e0ce2-1a08-49fd-a1e5-002a631f6b98",
+      "comment": "",
+      "command": "click",
+      "target": "id=mat-input-0",
+      "targets": [
+        ["id=mat-input-0", "id"],
+        ["css=#mat-input-0", "css:finder"],
+        ["xpath=//input[@id='mat-input-0']", "xpath:attributes"],
+        ["xpath=//div[@id='main-content']/div/app-create-charging-point/div/div/div/mat-form-field/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "843c1e6d-0d89-4e43-843b-def670794322",
+      "comment": "",
+      "command": "type",
+      "target": "id=mat-input-0",
+      "targets": [
+        ["id=mat-input-0", "id"],
+        ["css=#mat-input-0", "css:finder"],
+        ["xpath=//input[@id='mat-input-0']", "xpath:attributes"],
+        ["xpath=//div[@id='main-content']/div/app-create-charging-point/div/div/div/mat-form-field/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Ancap"
+    }, {
+      "id": "f7660f1a-ba73-4661-a9bd-797f8fb851c3",
+      "comment": "",
+      "command": "type",
+      "target": "id=mat-input-1",
+      "targets": [
+        ["id=mat-input-1", "id"],
+        ["css=#mat-input-1", "css:finder"],
+        ["xpath=//input[@id='mat-input-1']", "xpath:attributes"],
+        ["xpath=//div[@id='main-content']/div/app-create-charging-point/div/div/div[2]/mat-form-field/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/mat-form-field/div/div/div/input", "xpath:position"]
+      ],
+      "value": "Cuenta con carga de electricidad"
+    }, {
+      "id": "45035ab4-f641-4eec-81b5-3c9d0bdaf7b0",
+      "comment": "",
+      "command": "click",
+      "target": "id=mat-input-2",
+      "targets": [
+        ["id=mat-input-2", "id"],
+        ["css=#mat-input-2", "css:finder"],
+        ["xpath=//input[@id='mat-input-2']", "xpath:attributes"],
+        ["xpath=//div[@id='main-content']/div/app-create-charging-point/div/div/div[3]/mat-form-field/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/mat-form-field/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "78b32f60-e318-447b-9bfa-6d0e1d0c0b70",
+      "comment": "",
+      "command": "click",
+      "target": "id=mat-input-2",
+      "targets": [
+        ["id=mat-input-2", "id"],
+        ["css=#mat-input-2", "css:finder"],
+        ["xpath=//input[@id='mat-input-2']", "xpath:attributes"],
+        ["xpath=//div[@id='main-content']/div/app-create-charging-point/div/div/div[3]/mat-form-field/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/mat-form-field/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07824730-f075-48b4-8b86-72cedfa5f0c8",
+      "comment": "",
+      "command": "type",
+      "target": "id=mat-input-2",
+      "targets": [
+        ["id=mat-input-2", "id"],
+        ["css=#mat-input-2", "css:finder"],
+        ["xpath=//input[@id='mat-input-2']", "xpath:attributes"],
+        ["xpath=//div[@id='main-content']/div/app-create-charging-point/div/div/div[3]/mat-form-field/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/mat-form-field/div/div/div/input", "xpath:position"]
+      ],
+      "value": "Parada12 la rambla Gandhi"
+    }, {
+      "id": "43b5f7d7-27a3-40ff-930d-5943c30ead69",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mat-select-placeholder",
+      "targets": [
+        ["css=.mat-select-placeholder", "css:finder"],
+        ["xpath=//div[@id='mat-select-value-1']/span", "xpath:idRelative"],
+        ["xpath=//mat-select/div/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,' ')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5a56119b-578a-453f-bc39-001a3e4efdef",
+      "comment": "",
+      "command": "click",
+      "target": "css=#mat-option-0 > .mat-option-text",
+      "targets": [
+        ["css=#mat-option-0 > .mat-option-text", "css:finder"],
+        ["xpath=//mat-option[@id='mat-option-0']/span", "xpath:idRelative"],
+        ["xpath=//mat-option/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "600f02de-0c17-4794-9cfd-50e45313b9df",
+      "comment": "",
+      "command": "click",
+      "target": "name=Crear",
+      "targets": [
+        ["name=Crear", "name"],
+        ["css=.w-40", "css:finder"],
+        ["xpath=//button[@name='Crear']", "xpath:attributes"],
+        ["xpath=//div[@id='main-content']/div/app-create-charging-point/div/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Crear')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e3784e52-685c-4179-ae83-ebb81475e866",
+      "comment": "",
+      "command": "click",
+      "target": "id=getChargingPoints",
+      "targets": [
+        ["id=getChargingPoints", "id"],
+        ["linkText=Puntos de Carga", "linkText"],
+        ["css=#getChargingPoints", "css:finder"],
+        ["xpath=//a[@id='getChargingPoints']", "xpath:attributes"],
+        ["xpath=//div[@id='sidebar']/ul/div/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/explore/charging-points')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Puntos de Carga')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "8d37a447-cc01-41bb-80c5-0ffaf612f33f",
+    "name": "Deletes a charging points",
+    "commands": [{
+      "id": "713c2ed7-0329-429a-9e31-587992f644a6",
+      "comment": "",
+      "command": "open",
+      "target": "/explore/regions",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0f424e68-019f-4e5c-9b8a-06139eda9648",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1520x970",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9bfe6327-e36f-437f-ac7d-6247c22ce624",
+      "comment": "",
+      "command": "click",
+      "target": "id=getChargingPoints",
+      "targets": [
+        ["id=getChargingPoints", "id"],
+        ["linkText=Puntos de Carga", "linkText"],
+        ["css=#getChargingPoints", "css:finder"],
+        ["xpath=//a[@id='getChargingPoints']", "xpath:attributes"],
+        ["xpath=//div[@id='sidebar']/ul/div/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/explore/charging-points')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Puntos de Carga')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "da090aee-21c0-41f5-aa8d-5e5193a8183b",
+      "comment": "",
+      "command": "click",
+      "target": "id=loadCorrectly",
+      "targets": [
+        ["id=loadCorrectly", "id"],
+        ["css=#loadCorrectly", "css:finder"],
+        ["xpath=//p[@id='loadCorrectly']", "xpath:attributes"],
+        ["xpath=//div[@id='main-content']/div/app-charging-points/app-charging-point-list/div/div[2]/div/div[2]/div/div/p", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/p", "xpath:position"],
+        ["xpath=//p[contains(.,'Ancap')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "63988790-d75d-4eb4-befe-5131ed709313",
+      "comment": "",
+      "command": "click",
+      "target": "name=Eliminar",
+      "targets": [
+        ["name=Eliminar", "name"],
+        ["css=div:nth-child(2) > .w-40", "css:finder"],
+        ["xpath=//button[@name='Eliminar']", "xpath:attributes"],
+        ["xpath=//div[@id='main-content']/div/app-charging-points/app-charging-point-list/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Eliminar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f8fc0a2b-ad27-4437-bf1e-9ea92c22cc6e",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:4200/"],
+  "plugins": []
+}
